@@ -80,41 +80,13 @@ end
     })
   })
 
-	local langservers = {
-					'html',
-					'css',
-					'tsserver',
-					'intelephense'
-	}
-
-  -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-  require'lspconfig'.html.setup {
-    capabilities = capabilities
-  }
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-	require'lspconfig'.cssls.setup {
-    capabilities = capabilities,
-  }
-
-	require'lspconfig'.tsserver.setup{
-    capabilities = capabilities,
-	}
-
-	require'lspconfig'.intelephense.setup{
-    capabilities = capabilities
-	}
-
-	local lspconfig = require'lspconfig'
-  local configs = require'lspconfig.configs'
-
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-  if not configs.ls_emmet then
-   configs.ls_emmet = {
+   require'lspconfig/configs'.emmet_ls = {
     default_config = {
-      cmd = { 'ls_emmet', '--stdio' };
+      cmd = { 'emmet_ls', '--stdio' };
       filetypes = {
         'html',
         'css',
@@ -126,13 +98,24 @@ end
         'sass',
         'less',
       };
-      root_dir = function(fname)
+      root_dir = function(_)
         return vim.loop.cwd()
       end;
       settings = {};
     };
   }
-end
 
-lspconfig.ls_emmet.setup { capabilities = capabilities }
+	local langservers = {
+					'html',
+					'cssls',
+					'tsserver',
+					'intelephense',
+					'emmet_ls'
+	}
+
+ for _, server in ipairs(langservers) do
+  require'lspconfig'[server].setup{
+    capabilities = capabilities
+	}
+ end
 
