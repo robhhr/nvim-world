@@ -97,6 +97,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
         'typescriptreact',
         'sass',
         'less',
+        'php',
       };
       root_dir = function(_)
         return vim.loop.cwd()
