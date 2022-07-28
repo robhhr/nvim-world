@@ -37,4 +37,6 @@ use 'saadparwaiz1/cmp_luasnip'
 use 'norcalli/nvim-colorizer.lua'
 
 use 'lewis6991/gitsigns.nvim'
+
+use 'glepnir/dashboard-nvim'
 end)
