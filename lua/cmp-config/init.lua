@@ -15,10 +15,7 @@ end
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
     window = {
@@ -83,10 +80,59 @@ end
     })
   })
 
+	local langservers = {
+					'html',
+					'css',
+					'tsserver',
+					'intelephense'
+	}
+
   -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
   require'lspconfig'.html.setup {
     capabilities = capabilities
   }
+
+	require'lspconfig'.cssls.setup {
+    capabilities = capabilities,
+  }
+
+	require'lspconfig'.tsserver.setup{
+    capabilities = capabilities,
+	}
+
+	require'lspconfig'.intelephense.setup{
+    capabilities = capabilities
+	}
+
+	local lspconfig = require'lspconfig'
+  local configs = require'lspconfig.configs'
+
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+  if not configs.ls_emmet then
+   configs.ls_emmet = {
+    default_config = {
+      cmd = { 'ls_emmet', '--stdio' };
+      filetypes = {
+        'html',
+        'css',
+        'scss',
+        'javascript',
+        'javascriptreact',
+        'typescript',
+        'typescriptreact',
+        'sass',
+        'less',
+      };
+      root_dir = function(fname)
+        return vim.loop.cwd()
+      end;
+      settings = {};
+    };
+  }
+end
+
+lspconfig.ls_emmet.setup { capabilities = capabilities }
 
