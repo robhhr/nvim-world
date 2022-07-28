@@ -39,4 +39,6 @@ use 'norcalli/nvim-colorizer.lua'
 use 'lewis6991/gitsigns.nvim'
 
 use 'glepnir/dashboard-nvim'
+
+use "lukas-reineke/indent-blankline.nvim"
 end)
