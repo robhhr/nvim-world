@@ -8,7 +8,7 @@ local options = {
 	showmatch = true,
 	swapfile = false,
 	tabstop = 2,
-	termguicolors = true
+	termguicolors = true,
 	whichwrap = 'b,s,<,>,[,],h,l'
 }
 
