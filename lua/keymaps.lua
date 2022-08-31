@@ -19,3 +19,8 @@ keymap("n", "<leader><Left>", ":BufferLineCyclePrev<CR>", opts)
 
 keymap("n", "<leader>ww", ":Bwipeout<CR>", opts)
 keymap("n", "<leader>qq", ":Bwipeout!<CR>", opts)
+
+keymap("n", "<leader>p", ":Telescope find_files<CR>", opts)
+
+keymap("n", "<leader>ll", ":luafile ~/.config/nvim/lua/init.lua<CR>", opts)
+

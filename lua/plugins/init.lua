@@ -4,6 +4,8 @@ require('packer').startup(function(use)
 
 	use 'ellisonleao/gruvbox.nvim'
 
+  use 'aktersnurra/no-clown-fiesta.nvim'
+
 	use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }) 
 
 	use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
@@ -25,6 +27,7 @@ use 'windwp/nvim-autopairs'
 
 use {'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} }}
 
+use 'williamboman/nvim-lsp-installer'
 use 'neovim/nvim-lspconfig'
 use 'hrsh7th/cmp-nvim-lsp'
 use 'hrsh7th/cmp-buffer'
@@ -43,4 +46,6 @@ use 'glepnir/dashboard-nvim'
 use "lukas-reineke/indent-blankline.nvim"
 
 use "lukas-reineke/lsp-format.nvim"
+
+use "moll/vim-bbye"
 end)

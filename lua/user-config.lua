@@ -1,1 +1,1 @@
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme no-clown-fiesta]])
