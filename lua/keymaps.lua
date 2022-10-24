@@ -8,5 +8,11 @@ vim.g.maplocalleader = ","
 -- exit w/o save
 keymap("n", "<leader>q", ":q!<CR>", opts)
 
+-- exit w/ save
+keymap("n", "<leader>wq", ":wq!<CR>", opts)
+
+-- save
+keymap("n", "<leader>w", ":w<CR>", opts)
+
 -- reload config file
 keymap("n", "<leader>sv", ":luafile ~/.config/nvim/lua/init.lua<CR>", opts)
