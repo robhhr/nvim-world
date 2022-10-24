@@ -1,0 +1,2 @@
+require('material').setup({
+})
