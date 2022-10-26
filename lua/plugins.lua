@@ -21,10 +21,13 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- colorscheme(s)
-  -- use 'projekt0n/github-nvim-theme'
-  -- use 'yashguptaz/calvera-dark.nvim'
-  use 'marko-cerovac/material.nvim'
-end)
+  use({'folke/tokyonight.nvim',
+    config = dofile(path..'tokyonight.lua')
+  })
 
--- plugins initializations
-dofile(path..'material-theme.lua')
+  -- treesitter
+  use({"nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = dofile(path..'treesitter.lua')
+  })
+end)

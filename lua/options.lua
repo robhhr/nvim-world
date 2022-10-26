@@ -9,6 +9,7 @@ local options = {
 	number = true, -- show numbers on left
 	relativenumber = true, -- for motions (10j/24k)
 	shiftwidth = 2, -- spaces for autoindent
+	signcolumn = "yes",
 	showmatch = true, -- highlights matching parenthesis
 	smarttab = true,
 	swapfile = false, -- no backup files
