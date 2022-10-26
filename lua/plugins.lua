@@ -30,4 +30,34 @@ require('packer').startup(function(use)
     run = ":TSUpdate",
     config = dofile(path..'treesitter.lua')
   })
+
+  -- lsp
+  use 'williamboman/mason-lspconfig.nvim'
+  
+  use({'neovim/nvim-lspconfig',
+    requires = {
+      'williamboman/nvim-lsp-installer',
+      'onsails/lspkind-nvim',   
+    },
+    config = dofile(path..'lsp-config.lua')
+  })
+
+  use({
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "onsails/lspkind-nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "saadparwaiz1/cmp_luasnip",
+      "L3MON4D3/LuaSnip",
+    },
+    config = dofile(path..'cmp-config.lua')
+  })
+
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = {
+        "nvim-lua/plenary.nvim",
+    },
+    config = dofile(path.."nullls-config.lua")
+  })
 end)
