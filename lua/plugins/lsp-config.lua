@@ -77,3 +77,8 @@ nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx", "js" },
 }
+
+nvim_lsp.cssls.setup {
+  on_attach = on_attach,
+  filetypes = {"css", "less", "scss"}
+}
