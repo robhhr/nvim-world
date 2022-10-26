@@ -9,8 +9,8 @@ lspkind.init({
 
 local on_attach = function(client, bufnr)
   -- enable completion by <c-x><c-o>
-  -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-  -- vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -59,16 +59,6 @@ local handlers = {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- lsp_installer.on_server_ready(function(server)
---   server:setup({
---     on_attach = on_attach,
---     flags = flags,
---     settings = settings,
---     handlers = handlers,
---     capabilities = capabilities,
---   })
--- end)
-
 vim.diagnostic.config({
   update_in_insert = true,
   float = {
@@ -81,4 +71,9 @@ nvim_lsp.intelephense.setup {
   filetypes = { "php" },
   cmd = { "intelephense", "--stdio" },
   settings = settings
+}
+
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "js" },
 }

@@ -1,5 +1,6 @@
 local null_ls = require("null-ls")
 local utils = require("null-ls.utils")
+local prettier = require("prettier")
 
 null_ls.setup({
     root_dir = utils.root_pattern("composer.json", "package.json", ".git"), -- Add composer
@@ -16,3 +17,29 @@ null_ls.setup({
         }),
     },
 })
+
+prettier.setup({
+    ["null-ls"] = {
+        cli_options = {
+            {
+                arrow_parens = "avoid",
+                bracket_spacing = false,
+                end_of_line = "lf",
+                html_white_space_sensitivity = "css",
+                print_width = 80,
+                prose_wrap = "preserve",
+                require_pragma = false,
+                semi = false,
+                single_quote = true,
+                tab_width = 2,
+                trailing_comma = "all",
+                use_tabs = false
+        }
+    },
+      runtime_condition = function(params)
+        -- return false to skip running prettier
+        return true
+      end,
+      timeout = 5000,
+    }
+  })

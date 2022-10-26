@@ -80,6 +80,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local langservers = {
   'intelephense',
+  'tsserver',
 }
 
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.

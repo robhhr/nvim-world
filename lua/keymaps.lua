@@ -14,5 +14,8 @@ keymap("n", "<leader>wq", ":wq!<CR>", opts)
 -- save
 keymap("n", "<leader>w", ":w<CR>", opts)
 
+-- save & format (prettier supported)
+keymap("n", "<leader>fw", ":Prettier<CR>", opts)
+
 -- reload config file
 keymap("n", "<leader>sv", ":luafile ~/.config/nvim/lua/init.lua<CR>", opts)

@@ -58,4 +58,6 @@ require('packer').startup(function(use)
     },
     config = dofile(path.."nullls-config.lua")
   })
+
+  use 'muniftanjim/prettier.nvim'
 end)
