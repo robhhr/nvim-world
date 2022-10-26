@@ -17,4 +17,7 @@ require("nvim-treesitter.configs").setup({
     node_decremental = "grm",
    },
   },
+  autotag = {
+    enable = true,
+  }
  })

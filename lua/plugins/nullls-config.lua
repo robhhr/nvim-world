@@ -2,7 +2,7 @@ local null_ls = require("null-ls")
 local utils = require("null-ls.utils")
 
 null_ls.setup({
-    root_dir = utils.root_pattern("composer.json", "package.json", "Makefile", ".git"), -- Add composer
+    root_dir = utils.root_pattern("composer.json", "package.json", ".git"), -- Add composer
     diagnostics_format = "#{m} (#{c}) [#{s}]",    -- Makes PHPCS errors more readeable
     sources = {
         null_ls.builtins.completion.spell,        -- You still need to execute `:set spell`

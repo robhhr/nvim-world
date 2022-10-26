@@ -1,6 +1,7 @@
 local lsp_installer = require("nvim-lsp-installer")
 local lspkind = require("lspkind")
 local opts = { noremap = true, silent = true }
+local status, nvim_lsp = pcall(require, "lspconfig")
 
 lspkind.init({
   mode = "symbol",
@@ -8,7 +9,16 @@ lspkind.init({
 
 local on_attach = function(client, bufnr)
   -- enable completion by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  -- vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+
+  if client.server_capabilities.documentFormattingProvider then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("Format", { clear = true }),
+      buffer = bufnr,
+      callback = function() vim.lsp.buf.formatting_seq_sync() end
+    })
+  end
 end
 
 local flags = {
@@ -49,19 +59,26 @@ local handlers = {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-lsp_installer.on_server_ready(function(server)
-  server:setup({
-    on_attach = on_attach,
-    flags = flags,
-    settings = settings,
-    handlers = handlers,
-    capabilities = capabilities,
-  })
-end)
+-- lsp_installer.on_server_ready(function(server)
+--   server:setup({
+--     on_attach = on_attach,
+--     flags = flags,
+--     settings = settings,
+--     handlers = handlers,
+--     capabilities = capabilities,
+--   })
+-- end)
 
 vim.diagnostic.config({
-  virtual_text = false,
+  update_in_insert = true,
   float = {
       border = "rounded",
   },
 })
+
+nvim_lsp.intelephense.setup {
+  on_attach = on_attach,
+  filetypes = { "php" },
+  cmd = { "intelephense", "--stdio" },
+  settings = settings
+}
