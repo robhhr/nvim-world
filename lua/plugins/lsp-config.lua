@@ -82,3 +82,13 @@ nvim_lsp.cssls.setup {
   on_attach = on_attach,
   filetypes = {"css", "less", "scss"}
 }
+
+nvim_lsp.html.setup {
+  on_attach = on_attach,
+  filetypes = {"html", "php"}
+}
+
+nvim_lsp.jsonls.setup {
+  on_attach = on_attach,
+  filetypes = {"json", "jsonc"}
+}

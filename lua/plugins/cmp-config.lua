@@ -81,16 +81,13 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 local langservers = {
   'intelephense',
   'tsserver',
-  'cssls'
+  'cssls',
+  'html',
+  'jsonls'
 }
-
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- require('lspconfig/configs')['intelephense'].setup {
---   capabilities = capabilities
--- }
 
 for _, server in ipairs(langservers) do
   require'lspconfig'[server].setup{
     capabilities = capabilities
 	}
- end
+end
