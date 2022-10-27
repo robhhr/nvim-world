@@ -77,4 +77,13 @@ require('packer').startup(function(use)
     },
     config = dofile(path..'lualine.lua')
   })
+
+  -- telescope
+  use({
+    'nvim-telescope/telescope.nvim',
+    -- also brew install ripgrep && brew install fd to support wraps and dir search
+    requires = {
+      'nvim-lua/plenary.nvim',
+    }
+  })
 end)
