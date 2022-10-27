@@ -109,4 +109,10 @@ require('packer').startup(function(use)
     'numToStr/Comment.nvim',
     config = dofile(path..'comment.lua')
   }
+
+  use {
+    "kevinhwang91/nvim-ufo",
+    requires = "kevinhwang91/promise-async",
+    config = dofile(path..'ufo.lua')
+  }
 end)
