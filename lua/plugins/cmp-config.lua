@@ -91,3 +91,4 @@ for _, server in ipairs(langservers) do
     capabilities = capabilities
 	}
 end
+

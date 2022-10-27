@@ -31,7 +31,7 @@ require('packer').startup(function(use)
     config = dofile(path..'treesitter.lua')
   })
 
-  -- lsp
+  -- lsp shenaningans (installer, cmp, snips, format)
   use({'neovim/nvim-lspconfig',
     requires = {
       'williamboman/nvim-lsp-installer',
@@ -60,4 +60,12 @@ require('packer').startup(function(use)
   })
 
   use 'muniftanjim/prettier.nvim'
+
+  -- autopairs
+  use({
+    'windwp/nvim-autopairs',
+    config = dofile(path..'nvim-autopairs.lua')
+  })
+
+  use 'windwp/nvim-ts-autotag'
 end)
