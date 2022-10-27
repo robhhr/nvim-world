@@ -81,10 +81,11 @@ require('packer').startup(function(use)
   -- telescope
   use({
     'nvim-telescope/telescope.nvim',
-    -- also brew install ripgrep && brew install fd to support wraps and dir search
+    -- also brew install ripgrep && brew install fd to full support wraps/dir search & gitignore
     requires = {
       'nvim-lua/plenary.nvim',
-    }
+    },
+    config = dofile(path..'telescope.lua')
   })
 
   -- git signs
@@ -98,5 +99,8 @@ require('packer').startup(function(use)
     "kylechui/nvim-surround",
     tag = "*",
     config = dofile(path..'nvim-surround.lua')
-})
+  })
+
+  -- img viewer
+  use 'nvim-telescope/telescope-media-files.nvim'
 end)
