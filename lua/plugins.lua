@@ -68,4 +68,13 @@ require('packer').startup(function(use)
   })
 
   use 'windwp/nvim-ts-autotag'
+
+  -- status line
+  use({
+    'nvim-lualine/lualine.nvim',
+    requires = {
+      'kyazdani42/nvim-web-devicons'
+    },
+    config = dofile(path..'lualine.lua')
+  })
 end)
