@@ -92,4 +92,11 @@ require('packer').startup(function(use)
     'lewis6991/gitsigns.nvim',
     config = dofile(path..'gitsigns.lua')
   })
+
+  -- nvim surround
+  use({
+    "kylechui/nvim-surround",
+    tag = "*",
+    config = dofile(path..'nvim-surround.lua')
+})
 end)
