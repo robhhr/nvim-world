@@ -103,4 +103,10 @@ require('packer').startup(function(use)
 
   -- img viewer
   use 'nvim-telescope/telescope-media-files.nvim'
+
+  -- comments
+  use {
+    'numToStr/Comment.nvim',
+    config = dofile(path..'comment.lua')
+  }
 end)
