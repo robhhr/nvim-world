@@ -26,7 +26,11 @@ require('packer').startup(function(use)
   })
 
   use({'rose-pine/neovim',
-    config = dofile(path..'rose-pine.lua')
+    -- config = dofile(path..'rose-pine.lua')
+  })
+
+  use({'rebelot/kanagawa.nvim',
+    config = dofile(path..'kanagawa.lua')
   })
 
   -- treesitter
