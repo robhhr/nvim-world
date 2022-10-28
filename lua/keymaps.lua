@@ -38,5 +38,8 @@ keymap("n", "<leader><Right>", ":BufferLineCycleNext<CR>", opts)
 -- toggle prev buffer
 keymap("n", "<leader><Left>", ":BufferLineCyclePrev<CR>", opts)
 
+-- toggle term
+keymap("n", "<S-Down>", ":ToggleTerm<CR>", opts)
+
 -- reload config file
 keymap("n", "<leader>sv", ":luafile ~/.config/nvim/lua/init.lua<CR>", opts)

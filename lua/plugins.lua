@@ -135,4 +135,11 @@ require('packer').startup(function(use)
 
   -- buffer mgmt
   use 'moll/vim-bbye'
+
+
+  use({
+    'akinsho/toggleterm.nvim',
+    tag = '*',
+    config = dofile(path..'toggleterm.lua')
+  })
 end)
