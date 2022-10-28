@@ -162,4 +162,12 @@ require('packer').startup(function(use)
     "tversteeg/registers.nvim",
     config = dofile(path..'registers.lua')
   })
+
+  -- icon/emoji picker
+  use 'stevearc/dressing.nvim'
+
+  use({
+    "ziontee113/icon-picker.nvim",
+    config = dofile(path..'icon-picker.lua')
+  })
 end)
