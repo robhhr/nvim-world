@@ -115,4 +115,13 @@ require('packer').startup(function(use)
     requires = "kevinhwang91/promise-async",
     config = dofile(path..'ufo.lua')
   }
+
+  -- tree
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = dofile(path..'nvim-tree.lua')
+  }
 end)
