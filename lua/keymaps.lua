@@ -18,7 +18,7 @@ keymap("n", "<leader>sq", ":wq!<CR>", opts)
 keymap("n", "<leader>s", ":w<CR>", opts)
 
 -- save & format (prettier supported)
-keymap("n", "<leader>fw", ":Prettier<CR>", opts)
+keymap("n", "<leader>fs", ":Prettier<CR>", opts)
 
 -- telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
