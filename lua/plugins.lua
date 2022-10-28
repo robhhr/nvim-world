@@ -105,23 +105,34 @@ require('packer').startup(function(use)
   use 'nvim-telescope/telescope-media-files.nvim'
 
   -- comments
-  use {
+  use({
     'numToStr/Comment.nvim',
     config = dofile(path..'comment.lua')
-  }
+  })
 
-  use {
-    "kevinhwang91/nvim-ufo",
-    requires = "kevinhwang91/promise-async",
-    config = dofile(path..'ufo.lua')
-  }
+  -- use {
+  --   "kevinhwang91/nvim-ufo",
+  --   requires = "kevinhwang91/promise-async",
+  --   config = dofile(path..'ufo.lua')
+  -- }
 
   -- tree
-  use {
+  use({
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons',
     },
     config = dofile(path..'nvim-tree.lua')
-  }
+  })
+
+  -- bufferline
+  use({
+    'akinsho/bufferline.nvim',
+    tag = "v3.*",
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = dofile(path..'bufferline.lua')
+  })
+
+  -- buffer mgmt
+  use 'moll/vim-bbye'
 end)

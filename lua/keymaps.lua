@@ -5,17 +5,38 @@ keymap("", ",", "<Nop>", opts)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
+-- exit
+keymap("n", "<leader>q", ":q<CR>", opts)
+
 -- exit w/o save
-keymap("n", "<leader>q", ":q!<CR>", opts)
+keymap("n", "<leader>Q", ":q!<CR>", opts)
 
 -- exit w/ save
-keymap("n", "<leader>wq", ":wq!<CR>", opts)
+keymap("n", "<leader>sq", ":wq!<CR>", opts)
 
 -- save
-keymap("n", "<leader>w", ":w<CR>", opts)
+keymap("n", "<leader>s", ":w<CR>", opts)
 
 -- save & format (prettier supported)
 keymap("n", "<leader>fw", ":Prettier<CR>", opts)
+
+-- telescope
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>fg", ":Telescope git_files<CR>", opts)
+keymap("n", "<leader>fs", ":Telescope grep_string<CR>", opts)
+keymap("n", "<leader>fl", ":Telescope live_string<CR>", opts)
+
+-- nvim tree
+keymap("n", "<leader><Tab>", ":NvimTreeToggle<CR>", opts)
+
+-- force close buffer tab
+keymap("n", "<leader>w", ":Bwipeout!<CR>", opts)
+
+-- toggle next buffer
+keymap("n", "<leader><Right>", ":BufferLineCycleNext<CR>", opts)
+
+-- toggle prev buffer
+keymap("n", "<leader><Left>", ":BufferLineCyclePrev<CR>", opts)
 
 -- reload config file
 keymap("n", "<leader>sv", ":luafile ~/.config/nvim/lua/init.lua<CR>", opts)
