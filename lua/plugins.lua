@@ -136,10 +136,16 @@ require('packer').startup(function(use)
   -- buffer mgmt
   use 'moll/vim-bbye'
 
-
+  -- toggle term
   use({
     'akinsho/toggleterm.nvim',
     tag = '*',
     config = dofile(path..'toggleterm.lua')
+  })
+
+  -- colorizer
+  use({
+    'NvChad/nvim-colorizer.lua',
+    config = dofile(path..'nvm-colorizer.lua')
   })
 end)
