@@ -152,4 +152,10 @@ require('packer').startup(function(use)
     'NvChad/nvim-colorizer.lua',
     config = dofile(path..'nvm-colorizer.lua')
   })
+
+  -- registers 
+  use({
+    "tversteeg/registers.nvim",
+    config = dofile(path..'registers.lua')
+  })
 end)
