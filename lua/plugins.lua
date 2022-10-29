@@ -176,4 +176,10 @@ require('packer').startup(function(use)
     'andweeb/presence.nvim',
     config = dofile(path..'presence.lua')
   })
+
+  -- img previews
+  use({
+    'adelarsq/image_preview.nvim',
+    config = dofile(path..'image-preview.lua')
+  })
 end)
