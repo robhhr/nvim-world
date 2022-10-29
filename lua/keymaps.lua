@@ -44,5 +44,10 @@ keymap("n", "<S-Down>", ":ToggleTerm<CR>", opts)
 -- registers
 keymap("n", "<leader>yy", ":Registers<CR>", opts)
 
+-- emoji/symbol picker
+keymap("n", "<leader>em", ":IconPickerNormal<CR>", opts)
+
 -- reload config file
 keymap("n", "<leader>sv", ":luafile ~/.config/nvim/lua/init.lua<CR>", opts)
+
+

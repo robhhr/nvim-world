@@ -170,4 +170,10 @@ require('packer').startup(function(use)
     "ziontee113/icon-picker.nvim",
     config = dofile(path..'icon-picker.lua')
   })
+
+  -- discord presence
+  use({
+    'andweeb/presence.nvim',
+    config = dofile(path..'presence.lua')
+  })
 end)
