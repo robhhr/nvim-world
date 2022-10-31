@@ -172,10 +172,10 @@ require('packer').startup(function(use)
   })
 
   -- discord presence
-  use({
+  --[[ use({
     'andweeb/presence.nvim',
     config = dofile(path..'presence.lua')
-  })
+  }) ]]
 
   -- img previews
   use({
