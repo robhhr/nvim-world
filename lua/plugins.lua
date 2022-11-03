@@ -182,4 +182,10 @@ require('packer').startup(function(use)
     'adelarsq/image_preview.nvim',
     config = dofile(path..'image-preview.lua')
   })
+
+  -- matchup words
+  use({
+    'andymass/vim-matchup',
+    config = dofile(path..'matchup.lua')
+  })
 end)
