@@ -118,11 +118,11 @@ require('packer').startup(function(use)
     config = dofile(path..'comment.lua')
   })
 
-  -- use {
-  --   "kevinhwang91/nvim-ufo",
-  --   requires = "kevinhwang91/promise-async",
-  --   config = dofile(path..'ufo.lua')
-  -- }
+  use {
+    "kevinhwang91/nvim-ufo",
+    requires = "kevinhwang91/promise-async",
+    config = dofile(path..'ufo.lua')
+  }
 
   -- tree
   use({
