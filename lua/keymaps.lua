@@ -24,7 +24,7 @@ keymap("n", "<leader>sf", ":Prettier<CR> <BAR> :w<CR>", opts)
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope git_files<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope grep_string<CR>", opts)
-keymap("n", "<leader>fl", ":Telescope live_string<CR>", opts)
+keymap("n", "<leader>fl", ":Telescope live_grep<CR>", opts)
 
 -- nvim tree
 keymap("n", "<leader><Tab>", ":NvimTreeToggle<CR>", opts)
