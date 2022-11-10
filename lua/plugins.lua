@@ -118,11 +118,11 @@ require('packer').startup(function(use)
     config = dofile(path..'comment.lua')
   })
 
-  -- use {
-  --   "kevinhwang91/nvim-ufo",
-  --   requires = "kevinhwang91/promise-async",
-  --   config = dofile(path..'ufo.lua')
-  -- }
+  use {
+    "kevinhwang91/nvim-ufo",
+    requires = "kevinhwang91/promise-async",
+    config = dofile(path..'ufo.lua')
+  }
 
   -- tree
   use({
@@ -172,14 +172,20 @@ require('packer').startup(function(use)
   })
 
   -- discord presence
-  use({
+  --[[ use({
     'andweeb/presence.nvim',
     config = dofile(path..'presence.lua')
-  })
+  }) ]]
 
   -- img previews
   use({
     'adelarsq/image_preview.nvim',
     config = dofile(path..'image-preview.lua')
+  })
+
+  -- matchup words
+  use({
+    'andymass/vim-matchup',
+    config = dofile(path..'matchup.lua')
   })
 end)

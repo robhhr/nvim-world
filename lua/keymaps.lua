@@ -15,13 +15,13 @@ keymap("n", "<leader>Q", ":q!<CR>", opts)
 keymap("n", "<leader>s", ":w<CR>", opts)
 
 -- save & format (prettier supported)
-keymap("n", "<leader>p", ":Prettier<CR> :w<CR>", opts)
+keymap("n", "<leader>p", ":Prettier<CR> <BAR> :w<CR>", opts)
 
 -- telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope git_files<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope grep_string<CR>", opts)
-keymap("n", "<leader>fl", ":Telescope live_string<CR>", opts)
+keymap("n", "<leader>fl", ":Telescope live_grep<CR>", opts)
 
 -- nvim tree
 keymap("n", "<leader><Tab>", ":NvimTreeToggle<CR>", opts)

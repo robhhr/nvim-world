@@ -59,6 +59,11 @@ local handlers = {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true
+}
+
 vim.diagnostic.config({
   update_in_insert = true,
   float = {
