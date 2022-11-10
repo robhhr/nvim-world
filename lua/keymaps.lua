@@ -11,14 +11,11 @@ keymap("n", "<leader>q", ":q<CR>", opts)
 -- exit w/o save
 keymap("n", "<leader>Q", ":q!<CR>", opts)
 
--- exit w/ save
-keymap("n", "<leader>sq", ":wq!<CR>", opts)
-
 -- save
 keymap("n", "<leader>s", ":w<CR>", opts)
 
 -- save & format (prettier supported)
-keymap("n", "<leader>ss", ":Prettier<CR> :w<CR>", opts)
+keymap("n", "<leader>p", ":Prettier<CR> :w<CR>", opts)
 
 -- telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
@@ -48,6 +45,5 @@ keymap("n", "<leader>yy", ":Registers<CR>", opts)
 keymap("n", "<leader>em", ":IconPickerNormal<CR>", opts)
 
 -- reload config file
-keymap("n", "<leader>sv", ":luafile ~/.config/nvim/lua/init.lua<CR>", opts)
-
+keymap("n", "<leader>rel", ":luafile ~/.config/nvim/lua/init.lua<CR>", opts)
 
