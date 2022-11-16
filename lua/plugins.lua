@@ -22,7 +22,7 @@ require('packer').startup(function(use)
 
   -- colorscheme(s)
   use({'folke/tokyonight.nvim',
-    -- config = dofile(path..'tokyonight.lua')
+    config = dofile(path..'tokyonight.lua')
   })
 
   use({'rose-pine/neovim',
@@ -30,7 +30,7 @@ require('packer').startup(function(use)
   })
 
   use({'rebelot/kanagawa.nvim',
-    config = dofile(path..'kanagawa.lua')
+    -- config = dofile(path..'kanagawa.lua')
   })
 
   -- treesitter
