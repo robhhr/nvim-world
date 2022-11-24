@@ -1,9 +1,9 @@
 local opts = {noremap = true, silent = true}
 local keymap = vim.api.nvim_set_keymap
 
-keymap("", " ", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+keymap("", ",", "<Nop>", opts)
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 -- exit
 keymap("n", "<leader>q", ":q<CR>", opts)
