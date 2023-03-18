@@ -1,2 +1,3 @@
 require('neoworld.remap')
-print('hello you all')
+require('neoworld.set')
+
