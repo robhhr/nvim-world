@@ -116,8 +116,8 @@ return require('packer').startup(function(use)
 
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
-  use {
-    'lewis6991/gitsigns.nvim',
-  }
+  use { 'lewis6991/gitsigns.nvim' }
+
+  use { 'timuntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 end)
 
