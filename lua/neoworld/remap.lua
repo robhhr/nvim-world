@@ -35,3 +35,5 @@ keymap.set("n", "<leader><Left>", ":BufferLineCyclePrev<CR>")
 
 keymap.set("n", "<C-q>", ":bdelete! %<CR>")
 
+keymap.set("n", "\\u", ":UrlView<CR>")
+
