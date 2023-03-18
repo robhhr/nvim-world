@@ -11,7 +11,7 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim', tag = '0.1.1',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
-	
+
 	use({
 		'yazeed1s/oh-lucy.nvim',
 		as = 'oh-lucy',
@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-fugitive'
 
 	use {
-		'VonHeikemen/lsp-zero.nvim',
+		'vonheikemen/lsp-zero.nvim',
 		branch = 'v2.x',
 		requires = {
 			-- LSP Support
@@ -48,10 +48,31 @@ return require('packer').startup(function(use)
 			{'hrsh7th/cmp-nvim-lua'},     -- Optional
 
 			-- Snippets
-			{'L3MON4D3/LuaSnip'},             -- Required
+			{'l3mOn4d3/luasnip'},             -- Required
 			{'rafamadriz/friendly-snippets'}, -- Optional
 		}
 	}
+
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    }
+  }
+
+  use {
+    'akinsho/bufferline.nvim',
+    tag = "v3.*",
+    requires = 'nvim-tree/nvim-web-devicons'
+  }
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
 end)
 
 
