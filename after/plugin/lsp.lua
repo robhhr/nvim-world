@@ -28,6 +28,20 @@ lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
 end)
 
+lsp.set_server_config({
+  single_file_support = false,
+  capabilities = {
+    textDocument = {
+      foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+      }
+    }
+  }
+})
+
+require('ufo').setup()
+
 cmp.setup({
 	sources = {
 		{name = 'path'},

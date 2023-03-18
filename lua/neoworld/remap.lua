@@ -37,3 +37,13 @@ keymap.set("n", "<C-q>", ":bdelete! %<CR>")
 
 keymap.set("n", "\\u", ":UrlView<CR>")
 
+keymap.set("n", "zR", require('ufo').openAllFolds)
+keymap.set("n", "zM", require('ufo').closeAllFolds)
+
+keymap.set("n", "K", function()
+    local winid = require("ufo").peekFoldedLinesUnderCursor()
+    if not winid then
+        vim.fn.CocActionAsync("definitionHover")
+        vim.lsp.buf.hover()
+    end
+end)
