@@ -59,8 +59,19 @@ return require('packer').startup(function(use)
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    }
+      'muniftanjim/nui.nvim',
+    },
+    config = function ()
+        -- for diagnostic errors, you'll need to define them somewhere:
+      vim.fn.sign_define("DiagnosticSignError",
+        {text = " ", texthl = "DiagnosticSignError"})
+      vim.fn.sign_define("DiagnosticSignWarn",
+        {text = " ", texthl = "DiagnosticSignWarn"})
+      vim.fn.sign_define("DiagnosticSignInfo",
+        {text = " ", texthl = "DiagnosticSignInfo"})
+      vim.fn.sign_define("DiagnosticSignHint",
+        {text = "", texthl = "DiagnosticSignHint"})
+    end
   }
 
   use {
@@ -73,6 +84,24 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
-end)
 
+  use 'nvchad/nvim-colorizer.lua'
+
+  use 'uga-rosa/ccc.nvim'
+
+  use {
+    'numtostr/comment.nvim',
+    config = function() require('comment').setup() end
+  }
+
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
+  use {
+    'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+  }
+end)
 
