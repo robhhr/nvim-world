@@ -1,10 +1,13 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local options = {
-	background = 'dark',
+  background = 'dark',
   backup = false,
-	cmdheight = 2,
+  cmdheight = 2,
   colorcolumn = "80",
-	cursorline = true,
-	expandtab = true,
+  cursorline = true,
+  expandtab = true,
   fileencoding = 'utf-8',
   foldcolumn = '1',
   foldenable = true,
@@ -28,5 +31,5 @@ local options = {
 }
 
 for i, j in pairs(options) do
-		vim.opt[i] = j
+  vim.opt[i] = j
 end

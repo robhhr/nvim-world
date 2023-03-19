@@ -1,21 +1,39 @@
--- plugin disabled
-
---[[
 require("nvim-tree").setup({
   actions = {
     open_file = {
       quit_on_open = true
     },
   },
-  renderer = {
-    group_empty = true,
+  diagnostics = {
+    enable = true,
   },
   filters = {
     dotfiles = false,
   },
+  modified = {
+    enable = true,
+  },
+  renderer = {
+    group_empty = false,
+    highlight_git = true,
+    highlight_modified = 'all',
+    indent_markers = {
+      enable = true,
+      inline_arrows = false,
+    },
+    icons = {
+      git_placement = 'after',
+      modified_placement = 'before',
+      padding = ' ',
+      show = {
+        folder = true,
+        folder_arrow = false,
+        modified = false,
+      },
+    },
+  },
   view = {
     side = "right",
-    width = 28
-  }
+    width = 32,
+  },
 })
---]]
