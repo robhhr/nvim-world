@@ -16,4 +16,3 @@ require('neo-tree').setup({
     follow_current_file = true,
   },
 })
-
