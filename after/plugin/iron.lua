@@ -8,7 +8,9 @@ iron.setup {
         command = { "zsh" }
       }
     },
-    repl_open_cmd = require('iron.view').bottom(40),
+    repl_open_cmd = require('iron.view').split.rightbelow(function()
+      return 14
+    end)
   },
   keymaps = {
     send_motion = "<space>sc",

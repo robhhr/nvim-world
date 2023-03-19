@@ -55,3 +55,5 @@ keymap.set("n", "<leader>p", ":Neoformat prettier<CR>")
 keymap.set("n", "<C-p>", ":PackerSync<CR>")
 
 keymap.set("n", "<leader>g", ":Neogit<CR>")
+
+keymap.set("n", "<leader>r", ":IronRepl<CR>")
