@@ -10,6 +10,7 @@ lsp.ensure_installed({
   'intelephense',
   'jsonls',
   'lua_ls',
+  'pyright',
   'rust_analyzer',
   'tsserver',
 })
@@ -23,6 +24,33 @@ require('lspconfig').lua_ls.setup {
     }
   }
 }
+
+require('lspconfig').pyright.setup {
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "workspace",
+        useLibraryCodeForTypes = true
+      }
+    }
+  }
+}
+
+lsp.configure('pylsp', {
+  settings = {
+    pylsp = {
+      configurationSources = { 'flake8' },
+      plugins = {
+        pycodestyle = { enabled = false },
+        flake8 = {
+          enabled = true,
+          ignore = {},
+        }
+      }
+    }
+  }
+})
 
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({ buffer = bufnr })
@@ -44,6 +72,7 @@ lsp.format_on_save({
   servers = {
     ['intelephense'] = { 'php' },
     ['lua_ls'] = { 'lua' },
+    ['pyright'] = { 'py' },
     ['rust_analyzer'] = { 'rust', 'rs' },
     ['tsserver'] = { 'js' }
   }
@@ -59,9 +88,14 @@ cmp.setup({
     { name = 'luasnip', keyword_length = 2 },
   },
   mapping = {
-    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-Space>'] = cmp_action.tab_complete(),
     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+    ['<Tab>'] = cmp_action.luasnip_supertab(),
+    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
   }
 })
 
