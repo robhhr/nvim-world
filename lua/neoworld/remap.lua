@@ -53,3 +53,5 @@ keymap.set("n", "<leader>h", ":HopWord<CR>")
 keymap.set("n", "<leader>p", ":Neoformat prettier<CR>")
 
 keymap.set("n", "<C-p>", ":PackerSync<CR>")
+
+keymap.set("n", "<leader>g", ":Neogit<CR>")
