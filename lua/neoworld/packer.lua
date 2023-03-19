@@ -4,54 +4,54 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
 
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
-		requires = { {'nvim-lua/plenary.nvim'} }
-	}
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  }
 
-	use({
-		'yazeed1s/oh-lucy.nvim',
-		as = 'oh-lucy',
-		config = function()
-			vim.cmd('colorscheme oh-lucy-evening')
-		end
-	})
+  use({
+    'yazeed1s/oh-lucy.nvim',
+    as = 'oh-lucy',
+    config = function()
+      vim.cmd('colorscheme oh-lucy-evening')
+    end
+  })
 
-	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
-	use 'nvim-treesitter/playground'
+  use 'nvim-treesitter/playground'
 
-	use 'theprimeagen/harpoon'
+  use 'theprimeagen/harpoon'
 
-	use 'mbbill/undotree'
+  use 'mbbill/undotree'
 
-	use 'tpope/vim-fugitive'
+  use 'tpope/vim-fugitive'
 
-	use {
-		'vonheikemen/lsp-zero.nvim',
-		branch = 'v2.x',
-		requires = {
-			-- LSP Support
-			{'neovim/nvim-lspconfig'},             -- Required
-			{'williamboman/mason.nvim'},           -- Optional
-			{'williamboman/mason-lspconfig.nvim'}, -- Optional
+  use {
+    'vonheikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    requires = {
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' },             -- Required
+      { 'williamboman/mason.nvim' },           -- Optional
+      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-			-- Autocompletion
-			{'hrsh7th/nvim-cmp'},         -- Required
-			{'hrsh7th/cmp-nvim-lsp'},     -- Required
-			{'hrsh7th/cmp-buffer'},       -- Optional
-			{'hrsh7th/cmp-path'},         -- Optional
-			{'saadparwaiz1/cmp_luasnip'}, -- Optional
-			{'hrsh7th/cmp-nvim-lua'},     -- Optional
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },         -- Required
+      { 'hrsh7th/cmp-nvim-lsp' },     -- Required
+      { 'hrsh7th/cmp-buffer' },       -- Optional
+      { 'hrsh7th/cmp-path' },         -- Optional
+      { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+      { 'hrsh7th/cmp-nvim-lua' },     -- Optional
 
-			-- Snippets
-			{'l3mOn4d3/luasnip'},             -- Required
-			{'rafamadriz/friendly-snippets'}, -- Optional
-		}
-	}
+      -- Snippets
+      { 'l3mOn4d3/luasnip' },             -- Required
+      { 'rafamadriz/friendly-snippets' }, -- Optional
+    }
+  }
 
   use {
     "nvim-neo-tree/neo-tree.nvim",
@@ -61,16 +61,16 @@ return require('packer').startup(function(use)
       "nvim-tree/nvim-web-devicons",
       'muniftanjim/nui.nvim',
     },
-    config = function ()
-        -- for diagnostic errors, you'll need to define them somewhere:
+    config = function()
+      -- for diagnostic errors, you'll need to define them somewhere:
       vim.fn.sign_define("DiagnosticSignError",
-        {text = " ", texthl = "DiagnosticSignError"})
+        { text = " ", texthl = "DiagnosticSignError" })
       vim.fn.sign_define("DiagnosticSignWarn",
-        {text = " ", texthl = "DiagnosticSignWarn"})
+        { text = " ", texthl = "DiagnosticSignWarn" })
       vim.fn.sign_define("DiagnosticSignInfo",
-        {text = " ", texthl = "DiagnosticSignInfo"})
+        { text = " ", texthl = "DiagnosticSignInfo" })
       vim.fn.sign_define("DiagnosticSignHint",
-        {text = "", texthl = "DiagnosticSignHint"})
+        { text = "", texthl = "DiagnosticSignHint" })
     end
   }
 
@@ -114,10 +114,41 @@ return require('packer').startup(function(use)
     end
   })
 
-  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
   use { 'lewis6991/gitsigns.nvim' }
 
   use { 'timuntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
-end)
 
+  use({
+    'karb94/neoscroll.nvim',
+    config = function()
+      require('neoscroll').setup({
+        mappings = {
+          '<C-u>',
+          '<C-d>',
+          '<C-b>',
+          '<C-f>',
+          '<C-y>',
+          'zt',
+          'zz',
+          'zb'
+        },
+      })
+    end
+  })
+
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2',
+  }
+
+  use 'windwp/nvim-ts-autotag'
+
+  use 'sbdchd/neoformat'
+
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
+  }
+end)
