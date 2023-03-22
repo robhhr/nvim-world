@@ -30,4 +30,3 @@ require('todo-comments').setup({
     },
   },
 })
-
