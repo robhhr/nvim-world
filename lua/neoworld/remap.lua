@@ -40,14 +40,6 @@ keymap.set("n", "\\u", ":UrlView<CR>")
 keymap.set("n", "zR", require('ufo').openAllFolds)
 keymap.set("n", "zM", require('ufo').closeAllFolds)
 
-keymap.set("n", "K", function()
-  local winid = require("ufo").peekFoldedLinesUnderCursor()
-  if not winid then
-    vim.fn.CocActionAsync("definitionHover")
-    vim.lsp.buf.hover()
-  end
-end)
-
 keymap.set("n", "<leader>h", ":HopWord<CR>")
 
 keymap.set("n", "<leader>p", ":Neoformat prettier<CR>")
