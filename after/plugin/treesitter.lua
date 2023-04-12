@@ -1,15 +1,15 @@
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   autotag = {
     enable = true,
   },
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "help", "javascript", "json", "lua", "php", "rust", "scss", "typescript", "vim" },
+  -- a list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = { "javascript", "json", "lua", "php", "rust", "scss", "typescript", "vim" },
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
+  -- install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  -- automatically install missing parsers when entering buffer
+  -- recommendation: set to false if you don't have `tree-sitter` cli installed locally
   auto_install = true,
 
   highlight = {
