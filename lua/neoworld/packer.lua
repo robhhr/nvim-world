@@ -23,13 +23,23 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
-  use({
+  --[[ use({
     'yazeed1s/oh-lucy.nvim',
     as = 'oh-lucy',
     config = function()
       vim.cmd('colorscheme oh-lucy-evening')
     end
-  })
+  }) ]]
+  --
+
+  --[[ use({
+    'savq/melange-nvim',
+  }) ]]
+  use { 'ray-x/starry.nvim', setup = function()
+    vim.g.starry_italic_comments = true
+    vim.g.starry_deep_black = true
+    vim.g.starry_daylight_switch = true
+  end }
 
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
