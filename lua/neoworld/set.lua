@@ -1,12 +1,14 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.cmd('colorscheme kemonofriends')
+
 local options = {
-  background = 'dark',
+  background = 'light',
   backup = false,
   breakindent = true,
   breakindentopt = { 'shift:2', 'min:20', 'sbr' },
-  cmdheight = 6,
+  cmdheight = 2,
   colorcolumn = "80",
   cursorline = true,
   expandtab = true,

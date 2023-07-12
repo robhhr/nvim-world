@@ -18,18 +18,19 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    requires = { { 'nvim-lua/plenary.nvim' } }
-  }
+  -- use {
+  --   'nvim-telescope/telescope.nvim', tag = '0.1.1',
+  --   requires = { { 'nvim-lua/plenary.nvim' } }
+  -- }
 
-  use({
-    'yazeed1s/oh-lucy.nvim',
-    as = 'oh-lucy',
-    config = function()
-      vim.cmd('colorscheme oh-lucy-evening')
-    end
-  })
+  --[[ start of themes ]]
+  -- use({
+  --   'yazeed1s/oh-lucy.nvim',
+  --   as = 'oh-lucy',
+  --   config = function()
+  --     vim.cmd('colorscheme oh-lucy-evening')
+  --   end
+  -- })
 
   --[[ use({
     'savq/melange-nvim',
@@ -42,6 +43,12 @@ return require('packer').startup(function(use)
     vim.g.starry_daylight_switch = true
   end }
 
+  -- light colorschemes
+  use { "ellisonleao/gruvbox.nvim" }
+  use { 'foxbunny/vim-amber' }
+  use { 'machakann/vim-colorscheme-kemonofriends' }
+
+  --[[ end of themes ]]
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
   use 'nvim-treesitter/playground'
