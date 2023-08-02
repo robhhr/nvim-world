@@ -126,7 +126,7 @@ local bannerL = {
   [[      ⣿⣿⣿⣧⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⣠⣾⣿⣿⣿    ]],
 }
 
-dashboard.section.header.val = bannerL
+dashboard.section.header.val = bannerPikachuColor
 
 -- Menu
 dashboard.section.buttons.val = {

@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
-  --[[ start of themes ]]
+  --[[ 🎨 start of themes 🎨 ]]
   -- use({
   --   'yazeed1s/oh-lucy.nvim',
   --   as = 'oh-lucy',
@@ -37,18 +37,20 @@ return require('packer').startup(function(use)
   }) ]]
   --
 
-  use { 'ray-x/starry.nvim', setup = function()
-    vim.g.starry_italic_comments = true
-    vim.g.starry_deep_black = true
-    vim.g.starry_daylight_switch = true
-  end }
+  -- use { 'ray-x/starry.nvim', setup = function()
+  --   vim.g.starry_italic_comments = true
+  --   vim.g.starry_deep_black = true
+  --   vim.g.starry_daylight_switch = true
+  -- end }
+
+  use { 'nyoom-engineering/oxocarbon.nvim' }
 
   -- light colorschemes
   use { "ellisonleao/gruvbox.nvim" }
   use { 'foxbunny/vim-amber' }
   use { 'machakann/vim-colorscheme-kemonofriends' }
 
-  --[[ end of themes ]]
+  --[[ 🎨 end of themes 🎨 ]]
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
   use 'nvim-treesitter/playground'
@@ -133,7 +135,7 @@ return require('packer').startup(function(use)
 
   use { 'lewis6991/gitsigns.nvim' }
 
-  use { 'timuntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+  use { 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' }
 
   use({
     'karb94/neoscroll.nvim',
@@ -167,7 +169,16 @@ return require('packer').startup(function(use)
     requires = { 'nvim-tree/nvim-web-devicons' },
   }
 
-  use { 'hkupty/iron.nvim' }
+  use "stevearc/dressing.nvim"
+
+  use({
+    "ziontee113/icon-picker.nvim",
+    config = function()
+      require("icon-picker").setup({
+        disable_legacy_commands = true
+      })
+    end,
+  })
 
   if packer_bootstrap then
     require('packer').sync()
