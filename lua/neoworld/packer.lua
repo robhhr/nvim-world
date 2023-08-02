@@ -169,16 +169,7 @@ return require('packer').startup(function(use)
     requires = { 'nvim-tree/nvim-web-devicons' },
   }
 
-  use "stevearc/dressing.nvim"
-
-  use({
-    "ziontee113/icon-picker.nvim",
-    config = function()
-      require("icon-picker").setup({
-        disable_legacy_commands = true
-      })
-    end,
-  })
+  use 'nvim-telescope/telescope-symbols.nvim'
 
   if packer_bootstrap then
     require('packer').sync()
