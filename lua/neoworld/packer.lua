@@ -51,6 +51,10 @@ return require('packer').startup(function(use)
 
   use 'ray-x/aurora'
 
+  use 'Mofiqul/dracula.nvim'
+
+  use 'Shatur/neovim-ayu'
+
   -- light colorschemes
   use { "ellisonleao/gruvbox.nvim" }
   use { 'foxbunny/vim-amber' }
@@ -180,6 +184,15 @@ return require('packer').startup(function(use)
   use { "akinsho/toggleterm.nvim", tag = '*', config = function()
     require("toggleterm").setup()
   end }
+
+  use { 'echasnovski/mini.cursorword', config = function()
+    require('mini.cursorword').setup()
+  end }
+
+  use { 'echasnovski/mini.indentscope', config = function()
+    require('mini.indentscope').setup()
+  end }
+
 
   if packer_bootstrap then
     require('packer').sync()
