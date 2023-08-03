@@ -3,8 +3,6 @@ local keymap = vim.keymap
 
 global.mapleader = ","
 
-keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
 keymap.set("n", "<leader>w", ":w<CR>")
 keymap.set("n", "<leader>wq", ":wq<CR>")
 keymap.set("n", "<leader>q", ":q<CR>")
@@ -44,8 +42,4 @@ keymap.set("n", "<leader>h", ":HopWord<CR>")
 
 keymap.set("n", "<leader>p", ":Neoformat prettier<CR>")
 
-keymap.set("n", "<C-p>", ":PackerSync<CR>")
-
 keymap.set("n", "<leader>g", ":Neogit<CR>")
-
-keymap.set("n", "<leader>r", ":IronRepl<CR>")

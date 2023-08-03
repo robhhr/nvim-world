@@ -43,7 +43,13 @@ return require('packer').startup(function(use)
   --   vim.g.starry_daylight_switch = true
   -- end }
 
-  use { 'nyoom-engineering/oxocarbon.nvim' }
+  -- use { 'nyoom-engineering/oxocarbon.nvim' }
+
+  use 'frenzyexists/aquarium-vim'
+
+  use 'maxmx03/fluoromachine.nvim'
+
+  use 'ray-x/aurora'
 
   -- light colorschemes
   use { "ellisonleao/gruvbox.nvim" }
@@ -170,6 +176,10 @@ return require('packer').startup(function(use)
   }
 
   use 'nvim-telescope/telescope-symbols.nvim'
+
+  use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup()
+  end }
 
   if packer_bootstrap then
     require('packer').sync()

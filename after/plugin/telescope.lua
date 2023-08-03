@@ -8,15 +8,9 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>gg', builtin.git_files, {})
 vim.keymap.set('n', '<leader>gp', function()
-  builtin.grep_string({ search = vim.fn.input("Grep >") });
+  builtin.grep_string({ search = vim.fn.input("grep_string >") });
 end)
-vim.keymap.set('n', '<leader><leader>e', builtin.symbols, {})
-
-builtin.symbols {
-  sources = {
-    'emoji', 'gitmoji'
-  }
-}
+vim.keymap.set('n', '<leader><leader>e<CR>', builtin.symbols, {})
 
 telescope.setup({
   defaults = {

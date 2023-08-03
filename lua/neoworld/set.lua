@@ -1,10 +1,10 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.cmd('colorscheme kemonofriends')
+vim.cmd('colorscheme aquarium')
 
 local options = {
-  background = 'light',
+  background = 'dark',
   backup = false,
   breakindent = true,
   breakindentopt = { 'shift:2', 'min:20', 'sbr' },
