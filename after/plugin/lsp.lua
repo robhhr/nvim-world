@@ -13,6 +13,7 @@ lsp.ensure_installed({
   'pyright',
   'rust_analyzer',
   'tsserver',
+  'solargraph'
 })
 
 require('lspconfig').lua_ls.setup {
@@ -52,6 +53,10 @@ lsp.configure('pylsp', {
   }
 })
 
+require('lspconfig').rubocop.setup {}
+
+require('lspconfig').solargraph.setup {}
+
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({ buffer = bufnr })
 end)
@@ -74,7 +79,8 @@ lsp.format_on_save({
     ['lua_ls'] = { 'lua' },
     ['pyright'] = { 'py' },
     ['rust_analyzer'] = { 'rust', 'rs' },
-    ['tsserver'] = { 'js' }
+    ['tsserver'] = { 'js' },
+    ['rubocop'] = { 'ruby', 'rb' }
   }
 })
 
