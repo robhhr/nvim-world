@@ -9,6 +9,7 @@ global.copilot_filetypes = { ["*"] = true, xml = false }
 
 -- remap tab for enter
 global.copilot_no_tab_map = true
+global.copilot_assume_mapped = true
 keymap.set("i", "<M-Right>", "copilot#Accept('<CR>')", { expr = true, silent = true })
 
 -- remap (cycle to next suggestion)
