@@ -195,7 +195,6 @@ return require('packer').startup(function(use)
     require('mini.indentscope').setup()
   end }
 
-
   if packer_bootstrap then
     require('packer').sync()
   end

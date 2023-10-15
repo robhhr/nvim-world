@@ -1,7 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.cmd('colorscheme ayu-dark')
+vim.cmd('colorscheme dracula-soft')
 
 local options = {
   background = 'dark',
