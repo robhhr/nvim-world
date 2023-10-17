@@ -24,43 +24,21 @@ return require('packer').startup(function(use)
   }
 
   --[[ 🎨 start of themes 🎨 ]]
-  -- use({
-  --   'yazeed1s/oh-lucy.nvim',
-  --   as = 'oh-lucy',
-  --   config = function()
-  --     vim.cmd('colorscheme oh-lucy-evening')
-  --   end
-  -- })
-
-  --[[ use({
-    'savq/melange-nvim',
-  }) ]]
-  --
-
-  -- use { 'ray-x/starry.nvim', setup = function()
-  --   vim.g.starry_italic_comments = true
-  --   vim.g.starry_deep_black = true
-  --   vim.g.starry_daylight_switch = true
-  -- end }
-
-  -- use { 'nyoom-engineering/oxocarbon.nvim' }
-
-  use 'frenzyexists/aquarium-vim'
-
-  use 'maxmx03/fluoromachine.nvim'
-
   use 'ray-x/aurora'
 
   use 'Mofiqul/dracula.nvim'
 
   use 'Shatur/neovim-ayu'
 
-  -- light colorschemes
-  use { "ellisonleao/gruvbox.nvim" }
-  use { 'foxbunny/vim-amber' }
-  use { 'machakann/vim-colorscheme-kemonofriends' }
+  use { 'askfiy/visual_studio_code',
+    config = function()
+      require("visual_studio_code").setup {}
+    end
+  }
 
+  use 'projekt0n/github-nvim-theme'
   --[[ 🎨 end of themes 🎨 ]]
+
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
   use 'nvim-treesitter/playground'

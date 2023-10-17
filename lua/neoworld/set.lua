@@ -1,15 +1,14 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.cmd('colorscheme dracula-soft')
+vim.cmd('colorscheme github_dark_high_contrast')
 
 local options = {
   background = 'dark',
   backup = false,
   breakindent = true,
   breakindentopt = { 'shift:2', 'min:20', 'sbr' },
-  cmdheight = 4,
-  colorcolumn = "80",
+  cmdheight = 3,
   cursorline = true,
   expandtab = true,
   fileencoding = 'utf-8',
