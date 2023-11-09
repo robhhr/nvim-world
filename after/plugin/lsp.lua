@@ -79,6 +79,7 @@ lsp.format_on_save({
     ['pyright'] = { 'py' },
     ['rust_analyzer'] = { 'rust', 'rs' },
     ['tsserver'] = { 'js' },
+    ['prismals'] = { 'prisma' },
   }
 })
 
