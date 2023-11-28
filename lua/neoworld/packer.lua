@@ -11,11 +11,10 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- Only required if you have packer configured as `opt`
+-- only required if you have packer configured as 'opt'
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
   use {
@@ -24,11 +23,16 @@ return require('packer').startup(function(use)
   }
 
   --[[ 🎨 start of themes 🎨 ]]
-  use 'ray-x/aurora'
 
   use 'Mofiqul/dracula.nvim'
 
+  use 'projekt0n/github-nvim-theme'
+
+  use 'ellisonleao/gruvbox.nvim'
+
   use 'Shatur/neovim-ayu'
+
+  use 'Yazeed1s/oh-lucy.nvim'
 
   use { 'askfiy/visual_studio_code',
     config = function()
@@ -36,8 +40,8 @@ return require('packer').startup(function(use)
     end
   }
 
-  use 'projekt0n/github-nvim-theme'
   --[[ 🎨 end of themes 🎨 ]]
+
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
   use 'nvim-treesitter/playground'
