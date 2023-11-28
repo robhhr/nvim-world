@@ -24,15 +24,17 @@ return require('packer').startup(function(use)
 
   --[[ 🎨 start of themes 🎨 ]]
 
-  use 'Mofiqul/dracula.nvim'
-
   use 'projekt0n/github-nvim-theme'
 
   use 'ellisonleao/gruvbox.nvim'
 
   use 'Shatur/neovim-ayu'
 
-  use 'Yazeed1s/oh-lucy.nvim'
+  use 'folke/tokyonight.nvim'
+
+  use 'sainnhe/sonokai'
+
+  use 'zootedb0t/citruszest.nvim'
 
   use { 'askfiy/visual_studio_code',
     config = function()
@@ -48,20 +50,18 @@ return require('packer').startup(function(use)
 
   use 'theprimeagen/harpoon'
 
-  use 'mbbill/undotree'
-
   use 'tpope/vim-fugitive'
 
   use {
     'vonheikemen/lsp-zero.nvim',
     branch = 'v2.x',
     requires = {
-      -- LSP Support
+      -- LSP support
       { 'neovim/nvim-lspconfig' },             -- Required
       { 'williamboman/mason.nvim' },           -- Optional
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-      -- Autocompletion
+      -- autocompletion
       { 'hrsh7th/nvim-cmp' },         -- Required
       { 'hrsh7th/cmp-nvim-lsp' },     -- Required
       { 'hrsh7th/cmp-buffer' },       -- Optional
@@ -69,7 +69,7 @@ return require('packer').startup(function(use)
       { 'saadparwaiz1/cmp_luasnip' }, -- Optional
       { 'hrsh7th/cmp-nvim-lua' },     -- Optional
 
-      -- Snippets
+      -- snippets
       { 'l3mOn4d3/luasnip' },             -- Required
       { 'rafamadriz/friendly-snippets' }, -- Optional
     }
@@ -113,8 +113,6 @@ return require('packer').startup(function(use)
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
   }
-
-  use 'axieax/urlview.nvim'
 
   use({
     'kylechui/nvim-surround',

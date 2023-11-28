@@ -10,7 +10,7 @@ vim.keymap.set('n', '<leader>gg', builtin.git_files, {})
 vim.keymap.set('n', '<leader>gp', function()
   builtin.grep_string({ search = vim.fn.input("grep_string >") });
 end)
-vim.keymap.set('n', '<leader><leader>e<CR>', builtin.symbols, {})
+vim.keymap.set('n', '<leader><leader>e', builtin.symbols, {})
 
 telescope.setup({
   defaults = {

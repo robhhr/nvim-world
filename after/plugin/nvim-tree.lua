@@ -33,10 +33,16 @@ require("nvim-tree").setup({
         folder_arrow = false,
         modified = false,
       },
+      glyphs = {
+        git = {
+          unstaged = "✘",
+          staged = "✔",
+        },
+      },
     },
   },
   view = {
-    side = "left",
-    width = 32,
+    side = "right",
+    width = "100%",
   },
 })

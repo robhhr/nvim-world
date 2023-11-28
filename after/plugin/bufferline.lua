@@ -1,12 +1,14 @@
 require('bufferline').setup {
   options = {
-    numbers = "ordinal",
+    mode = "buffer",
+    numbers = "none",
+    themable = true,
     close_command = "bdelete! %d",
     right_mouse_command = "bdelete! %d",
     left_mouse_command = "buffer %d",
     middle_mouse_command = nil,
     indicator = {
-      style = 'underline',
+      style = 'none',
     },
     buffer_close_icon = '',
     modified_icon = '●',
@@ -16,7 +18,7 @@ require('bufferline').setup {
     max_name_length = 18,
     max_prefix_length = 15,
     truncate_names = true,
-    tab_size = 18,
+    tab_size = 15,
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = false,
     offsets = {
@@ -30,16 +32,16 @@ require('bufferline').setup {
     color_icons = true,
     show_buffer_icons = true,
     show_buffer_close_icons = false,
-    show_close_icon = true,
-    show_tab_indicators = true,
+    show_close_icon = false,
+    show_tab_indicators = false,
     show_duplicate_prefix = false,
-    persist_buffer_sort = true,
+    persist_buffer_sort = false,
     separator_style = { '' },
     enforce_regular_tabs = true,
     always_show_bufferline = true,
     hover = {
       enabled = false,
     },
-    sort_by = 'insert_at_end',
+    sort_by = 'insert_after_current',
   }
 }
