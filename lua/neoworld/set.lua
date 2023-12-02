@@ -10,6 +10,7 @@ local options = {
   breakindentopt = { 'shift:2', 'min:20', 'sbr' },
   cmdheight = 3,
   cursorline = true,
+  endofline = true,
   expandtab = true,
   fileencoding = 'utf-8',
   foldcolumn = '1',
