@@ -1,7 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.cmd('colorscheme citruszest')
+vim.cmd('colorscheme oxocarbon')
 
 local options = {
   background = 'dark',

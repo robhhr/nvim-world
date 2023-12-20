@@ -23,6 +23,9 @@ return require('packer').startup(function(use)
   }
 
   --[[ 🎨 start of themes 🎨 ]]
+  use 'EdenEast/nightfox.nvim'
+
+  use 'nyoom-engineering/oxocarbon.nvim'
 
   use 'projekt0n/github-nvim-theme'
 
