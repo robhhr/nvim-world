@@ -13,7 +13,6 @@ lsp.ensure_installed({
   'pyright',
   'rust_analyzer',
   'tsserver',
-  'solargraph',
   'prismals',
 })
 
