@@ -131,23 +131,23 @@ return require('packer').startup(function(use)
 
   use { 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' }
 
-  use({
-    'karb94/neoscroll.nvim',
-    config = function()
-      require('neoscroll').setup({
-        mappings = {
-          '<C-u>',
-          '<C-d>',
-          '<C-b>',
-          '<C-f>',
-          '<C-y>',
-          'zt',
-          'zz',
-          'zb'
-        },
-      })
-    end
-  })
+  -- use({
+  --   'karb94/neoscroll.nvim',
+  --   config = function()
+  --     require('neoscroll').setup({
+  --       mappings = {
+  --         '<C-u>',
+  --         '<C-d>',
+  --         '<C-b>',
+  --         '<C-f>',
+  --         '<C-y>',
+  --         'zt',
+  --         'zz',
+  --         'zb'
+  --       },
+  --     })
+  --   end
+  -- })
 
   use {
     'phaazon/hop.nvim',

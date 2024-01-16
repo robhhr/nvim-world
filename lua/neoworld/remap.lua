@@ -15,8 +15,6 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 keymap.set("n", "J", "mzJ`z")
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
-keymap.set("n", "n", "nzzv")
-keymap.set("n", "N", "Nzzv")
 
 keymap.set("x", "<leader>p", "\"_dP")
 
@@ -54,4 +52,3 @@ vim.api.nvim_create_autocmd({ "BufWritePre" },
       if last_nonblank <= n_lines then vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, { '' }) end
     end,
   })
-
