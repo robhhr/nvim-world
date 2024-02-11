@@ -35,6 +35,21 @@ keymap.set("n", "\\u", ":UrlView<CR>")
 
 keymap.set("n", "zR", require('ufo').openAllFolds)
 keymap.set("n", "zM", require('ufo').closeAllFolds)
+keymap.set("n", "J", require('ufo').peekFoldedLinesUnderCursor)
+
+keymap.set('n', '<tab>',
+  function()
+    return require('fold-cycle').open()
+  end,
+  { silent = true, desc = 'Fold-cycle: open folds' }
+)
+
+keymap.set('n', '<s-tab>',
+  function()
+    return require('fold-cycle').close()
+  end,
+  { silent = true, desc = 'Fold-cycle: close folds' }
+)
 
 keymap.set("n", "<leader>h", ":HopWord<CR>")
 
@@ -51,4 +66,16 @@ vim.api.nvim_create_autocmd({ "BufWritePre" },
       local last_nonblank = vim.fn.prevnonblank(n_lines)
       if last_nonblank <= n_lines then vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, { '' }) end
     end,
-  })
+  }
+)
+
+keymap.set('n', '<A-h>', require('smart-splits').resize_left)
+keymap.set('n', '<A-j>', require('smart-splits').resize_down)
+keymap.set('n', '<A-k>', require('smart-splits').resize_up)
+keymap.set('n', '<A-l>', require('smart-splits').resize_right)
+keymap.set('n', '<A-Left>', require('smart-splits').move_cursor_left)
+keymap.set('n', '<A-Down>', require('smart-splits').move_cursor_down)
+keymap.set('n', '<A-Up>', require('smart-splits').move_cursor_up)
+keymap.set('n', '<A-Right>', require('smart-splits').move_cursor_right)
+keymap.set('n', '<leader><leader><Up>', require('smart-splits').start_resize_mode)
+

@@ -81,6 +81,13 @@ return require('packer').startup(function(use)
   use 'github/copilot.vim'
 
   use {
+    'jghauser/fold-cycle.nvim',
+    config = function()
+      require('fold-cycle').setup()
+    end
+  }
+
+  use {
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons',
@@ -112,6 +119,8 @@ return require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
+  use 'mrjones2014/smart-splits.nvim'
+
   use {
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
@@ -125,7 +134,19 @@ return require('packer').startup(function(use)
     end
   })
 
-  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+  use({
+    'kevinhwang91/nvim-ufo',
+    requires = 'kevinhwang91/promise-async',
+    config = function()
+      vim.o.foldcolumn = '1'
+      vim.o.foldlevel = 99
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+      require("ufo").setup({
+        close_fold_kinds = { "imports" },
+      })
+    end,
+  })
 
   use { 'lewis6991/gitsigns.nvim' }
 
