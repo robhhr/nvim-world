@@ -1,4 +1,20 @@
-require('bufferline').setup {
+local bufferline = require('bufferline')
+
+bufferline.setup {
+  highlights = {
+    buffer_selected = {
+      bold = true,
+      italic = false,
+    },
+    warning_selected = {
+      bold = true,
+      italic = false,
+    },
+    error_selected = {
+      bold = true,
+      italic = false,
+    },
+  },
   options = {
     mode = "buffer",
     numbers = "none",
@@ -20,7 +36,7 @@ require('bufferline').setup {
     truncate_names = true,
     tab_size = 15,
     diagnostics = "nvim_lsp",
-    diagnostics_update_in_insert = false,
+    diagnostics_update_in_insert = true,
     offsets = {
       {
         filetype = "NvimTree",
@@ -30,7 +46,7 @@ require('bufferline').setup {
       }
     },
     color_icons = true,
-    show_buffer_icons = true,
+    show_buffer_icons = false,
     show_buffer_close_icons = false,
     show_close_icon = false,
     show_tab_indicators = false,
