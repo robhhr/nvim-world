@@ -1,7 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.cmd('colorscheme github_dark_high_contrast')
+vim.cmd('colorscheme gruvbox')
 
 local options = {
   background = 'dark',
