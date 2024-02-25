@@ -13,6 +13,8 @@ vim.keymap.set('n', '<leader>gp', function()
 end)
 vim.keymap.set('n', '<leader><leader>e', builtin.symbols, {})
 
+telescope.load_extension('lazygit')
+
 telescope.setup({
   defaults = {
     path_display = { "absolute" },

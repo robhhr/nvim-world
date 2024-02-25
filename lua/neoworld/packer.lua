@@ -150,7 +150,13 @@ return require('packer').startup(function(use)
 
   use { 'lewis6991/gitsigns.nvim' }
 
-  use { 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' }
+  use({
+    "kdheepak/lazygit.nvim",
+    requires = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+    },
+  })
 
   -- use({
   --   'karb94/neoscroll.nvim',
@@ -202,3 +208,4 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+
