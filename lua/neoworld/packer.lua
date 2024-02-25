@@ -23,21 +23,15 @@ return require('packer').startup(function(use)
   }
 
   --[[ 🎨 start of themes 🎨 ]]
-  use 'EdenEast/nightfox.nvim'
+  use 'Biscuit-Colorscheme/nvim'
 
-  use 'nyoom-engineering/oxocarbon.nvim'
+  use 'aoxfist/night-owl.nvim'
 
   use 'projekt0n/github-nvim-theme'
 
   use 'ellisonleao/gruvbox.nvim'
 
   use 'Shatur/neovim-ayu'
-
-  use 'folke/tokyonight.nvim'
-
-  use 'sainnhe/sonokai'
-
-  use 'zootedb0t/citruszest.nvim'
 
   use { 'askfiy/visual_studio_code',
     config = function()
@@ -208,4 +202,3 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
-
