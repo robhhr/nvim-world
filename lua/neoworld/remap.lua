@@ -26,12 +26,10 @@ keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left
 
 keymap.set("n", "<leader><Tab>", ":NvimTreeToggle<CR>")
 
-keymap.set("n", "<leader><Right>", ":BufferLineCycleNext<CR>")
-keymap.set("n", "<leader><Left>", ":BufferLineCyclePrev<CR>")
+keymap.set("n", "<leader><Right>", ":bnext<CR>")
+keymap.set("n", "<leader><Left>", ":bprevious<CR>")
 
 keymap.set("n", "<C-q>", ":bdelete! %<CR>")
-
-keymap.set("n", "\\u", ":UrlView<CR>")
 
 keymap.set("n", "zR", require('ufo').openAllFolds)
 keymap.set("n", "zM", require('ufo').closeAllFolds)
@@ -78,4 +76,3 @@ keymap.set('n', '<A-Down>', require('smart-splits').move_cursor_down)
 keymap.set('n', '<A-Up>', require('smart-splits').move_cursor_up)
 keymap.set('n', '<A-Right>', require('smart-splits').move_cursor_right)
 keymap.set('n', '<leader><leader><Up>', require('smart-splits').start_resize_mode)
-

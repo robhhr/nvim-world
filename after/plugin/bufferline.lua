@@ -1,4 +1,7 @@
-local bufferline = require('bufferline')
+local status_ok, bufferline = pcall(require, "bufferline")
+if not status_ok then
+  return
+end
 
 bufferline.setup {
   highlights = {
@@ -54,7 +57,7 @@ bufferline.setup {
     persist_buffer_sort = false,
     separator_style = { '' },
     enforce_regular_tabs = true,
-    always_show_bufferline = true,
+    always_show_bufferline = false,
     hover = {
       enabled = false,
     },

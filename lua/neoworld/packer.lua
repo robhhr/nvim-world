@@ -25,8 +25,6 @@ return require('packer').startup(function(use)
   --[[ 🎨 start of themes 🎨 ]]
   use 'Biscuit-Colorscheme/nvim'
 
-  use 'aoxfist/night-owl.nvim'
-
   use 'projekt0n/github-nvim-theme'
 
   use 'ellisonleao/gruvbox.nvim'
@@ -40,7 +38,6 @@ return require('packer').startup(function(use)
   }
 
   --[[ 🎨 end of themes 🎨 ]]
-
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
   use 'nvim-treesitter/playground'
@@ -74,6 +71,8 @@ return require('packer').startup(function(use)
 
   use 'github/copilot.vim'
 
+  use 'AndrewRadev/discotheque.vim'
+
   use {
     'jghauser/fold-cycle.nvim',
     config = function()
@@ -88,11 +87,11 @@ return require('packer').startup(function(use)
     },
   }
 
-  use {
-    'akinsho/bufferline.nvim',
-    tag = "v3.*",
-    requires = 'nvim-tree/nvim-web-devicons'
-  }
+  -- use {
+  --   'akinsho/bufferline.nvim',
+  --   tag = "v3.*",
+  --   requires = 'nvim-tree/nvim-web-devicons'
+  -- }
 
   use {
     'nvim-lualine/lualine.nvim',
