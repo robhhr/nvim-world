@@ -73,6 +73,8 @@ return require('packer').startup(function(use)
 
   use 'AndrewRadev/discotheque.vim'
 
+  use { "ellisonleao/glow.nvim", config = function() require("glow").setup() end }
+
   use {
     'jghauser/fold-cycle.nvim',
     config = function()
