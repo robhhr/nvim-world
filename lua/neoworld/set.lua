@@ -1,7 +1,8 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.cmd('colorscheme gruvbox')
+-- commenting bc gruvbox requires init after config
+-- vim.cmd('colorscheme gruvbox')
 
 local options = {
   background = 'dark',
