@@ -36,7 +36,6 @@ return require('packer').startup(function(use)
       require("visual_studio_code").setup {}
     end
   }
-
   --[[ 🎨 end of themes 🎨 ]]
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
@@ -73,7 +72,10 @@ return require('packer').startup(function(use)
 
   use 'AndrewRadev/discotheque.vim'
 
-  use { "ellisonleao/glow.nvim", config = function() require("glow").setup() end }
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
 
   use {
     'jghauser/fold-cycle.nvim',
