@@ -26,8 +26,8 @@ keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left
 
 keymap.set("n", "<leader><Tab>", ":NvimTreeToggle<CR>")
 
-keymap.set("n", "<leader><Right>", ":BufferLineCycleNext<CR>")
-keymap.set("n", "<leader><Left>", ":BufferLineCyclePrev<CR>")
+keymap.set("n", "<leader><Right>", ":bnext<CR>")
+keymap.set("n", "<leader><Left>", ":bprev<CR>")
 
 keymap.set("n", "<C-q>", ":bdelete! %<CR>")
 
