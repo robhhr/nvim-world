@@ -6,4 +6,7 @@ function ColorMyPencils(color)
   -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#121212" })
 end
 
+local ccc = require('ccc')
+ccc.setup()
+
 -- ColorMyPencils()
