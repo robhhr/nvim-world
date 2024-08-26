@@ -2,9 +2,9 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     -- themable = true,
-    theme = 'powerline',
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
+    theme = 'gruvbox-material',
+    section_separators = '',
+    component_separators = '',
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -22,7 +22,7 @@ require('lualine').setup {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
     lualine_c = { 'filename', 'node_version' },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_x = { 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
   },
