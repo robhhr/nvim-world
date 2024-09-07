@@ -1,5 +1,5 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- commenting bc gruvbox requires init after config
 -- vim.cmd('colorscheme gruvbox')

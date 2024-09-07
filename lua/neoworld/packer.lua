@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } },
   }
 
-  --[[ 🎨 start of themes 🎨 ]]
+  --[[ 🎨 themes 🎨 ]]
   use 'Biscuit-Colorscheme/nvim'
 
   use 'projekt0n/github-nvim-theme'
@@ -36,7 +36,8 @@ return require('packer').startup(function(use)
       require("visual_studio_code").setup {}
     end
   }
-  --[[ 🎨 end of themes 🎨 ]]
+  --[[ 🎨 themes 🎨 ]]
+
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
   use 'nvim-treesitter/playground'
@@ -45,28 +46,21 @@ return require('packer').startup(function(use)
 
   use 'tpope/vim-fugitive'
 
-  use {
-    'vonheikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    requires = {
-      -- LSP support
-      { 'neovim/nvim-lspconfig' },             -- Required
-      { 'williamboman/mason.nvim' },           -- Optional
-      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+  --[[ 🌻 lsp 🌻 ]]
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  use({ 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' })
+  use 'neovim/nvim-lspconfig'
 
-      -- autocompletion
-      { 'hrsh7th/nvim-cmp' },         -- Required
-      { 'hrsh7th/cmp-nvim-lsp' },     -- Required
-      { 'hrsh7th/cmp-buffer' },       -- Optional
-      { 'hrsh7th/cmp-path' },         -- Optional
-      { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-      { 'hrsh7th/cmp-nvim-lua' },     -- Optional
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'saadparwaiz1/cmp_luasnip'
 
-      -- snippets
-      { 'l3mOn4d3/luasnip' },             -- Required
-      { 'rafamadriz/friendly-snippets' }, -- Optional
-    }
-  }
+  use 'L3MON4D3/LuaSnip'
+  --[[ 🌻 lsp 🌻 ]]
 
   use 'github/copilot.vim'
 
@@ -159,32 +153,12 @@ return require('packer').startup(function(use)
     },
   })
 
-  -- use({
-  --   'karb94/neoscroll.nvim',
-  --   config = function()
-  --     require('neoscroll').setup({
-  --       mappings = {
-  --         '<C-u>',
-  --         '<C-d>',
-  --         '<C-b>',
-  --         '<C-f>',
-  --         '<C-y>',
-  --         'zt',
-  --         'zz',
-  --         'zb'
-  --       },
-  --     })
-  --   end
-  -- })
-
   use {
     'phaazon/hop.nvim',
     branch = 'v2',
   }
 
   use 'windwp/nvim-ts-autotag'
-
-  use 'sbdchd/neoformat'
 
   use {
     'goolord/alpha-nvim',
