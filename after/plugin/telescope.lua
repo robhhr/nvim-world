@@ -17,6 +17,7 @@ end)
 vim.keymap.set('n', '<leader><leader>e', builtin.symbols, {})
 
 telescope.load_extension('lazygit')
+telescope.load_extension('media_files')
 
 telescope.setup({
   defaults = {

@@ -22,6 +22,10 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } },
   }
 
+  use 'nvim-lua/popup.nvim'
+
+  use 'nvim-telescope/telescope-media-files.nvim'
+
   --[[ 🎨 themes 🎨 ]]
   use 'Biscuit-Colorscheme/nvim'
 
@@ -110,8 +114,6 @@ return require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
-  use 'mrjones2014/smart-splits.nvim'
-
   use {
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
@@ -166,6 +168,8 @@ return require('packer').startup(function(use)
   }
 
   use 'nvim-telescope/telescope-symbols.nvim'
+
+  use 'folke/twilight.nvim'
 
   use { "akinsho/toggleterm.nvim", tag = '*', config = function()
     require("toggleterm").setup()
