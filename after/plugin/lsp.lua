@@ -9,7 +9,8 @@ mason.setup({})
 mason_lspconfig.setup({
   ensure_installed = {
     'eslint',
-    'tsserver',
+    -- 'tsserver',
+    'ts_ls',
     'intelephense',
     'lua_ls',
     'cssls',
@@ -19,7 +20,7 @@ mason_lspconfig.setup({
       lsp_zero.default_setup(server_name)
     end,
 
-    ["tsserver"] = function()
+    ["ts_ls"] = function()
       local lspconfig = require("lspconfig")
       lspconfig.ts_ls.setup({
         on_attach = function(client, bufnr)
