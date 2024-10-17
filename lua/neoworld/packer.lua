@@ -66,8 +66,6 @@ return require('packer').startup(function(use)
   use 'L3MON4D3/LuaSnip'
   --[[ 🌻 lsp 🌻 ]]
 
-  use 'github/copilot.vim'
-
   use 'AndrewRadev/discotheque.vim'
 
   use({
