@@ -104,10 +104,10 @@ cmp.setup({
     ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
-    ['<M-Right>'] = cmp.mapping(function()
-      vim.api.nvim_feedkeys(vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)), 'n',
-        true)
-    end),
+    -- ['<M-Right>'] = cmp.mapping(function()
+    --   vim.api.nvim_feedkeys(vim.fn['codeium#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)), 'n',
+    --     true)
+    -- end),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true, -- automatically select first item
