@@ -1,4 +1,5 @@
 print("neoworld✨💚💛")
 require('neoworld.remap')
+require("neoworld.config")
 require('neoworld.format')
 require('neoworld.set')

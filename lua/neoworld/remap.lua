@@ -33,10 +33,6 @@ keymap.set("n", "<leader><Left>", ":bprev<CR>")
 
 keymap.set("n", "<C-q>", ":bdelete! %<CR>")
 
-keymap.set("n", "zR", require('ufo').openAllFolds)
-keymap.set("n", "zM", require('ufo').closeAllFolds)
-keymap.set("n", "J", require('ufo').peekFoldedLinesUnderCursor)
-
 keymap.set("n", "<leader><Space>", ":Twilight<CR>")
 
 keymap.set('n', '<tab>',
