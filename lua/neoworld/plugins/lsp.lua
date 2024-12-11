@@ -9,11 +9,11 @@ mason.setup({})
 mason_lspconfig.setup({
     ensure_installed = {
         'eslint',
-        -- 'tsserver',
         'ts_ls',
         'intelephense',
         'lua_ls',
         'cssls',
+        'vimls'
     },
     handlers = {
         function(server_name)

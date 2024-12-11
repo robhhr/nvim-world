@@ -188,9 +188,49 @@ require("lazy").setup({
         },
     },
 
-    { 'numtostr/comment.nvim',     opts = {} },
-    { 'jghauser/fold-cycle.nvim',  opts = {} },
-    { "nvchad/nvim-colorizer.lua", opts = {} },
+    {
+        "folke/trouble.nvim",
+        opts = {},
+        cmd = "Trouble",
+        keys = {
+            {
+                "<leader>xx",
+                "<cmd>Trouble diagnostics toggle focus=true<cr>",
+                desc = "Diagnostics (Trouble)",
+            },
+        },
+    },
+
+    {
+        "olimorris/codecompanion.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("neoworld.plugins.codecompanion")
+        end,
+    },
+
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+            require("neoworld.plugins.lualine")
+        end,
+    },
+
+    {
+        "lewis6991/gitsigns.nvim",
+        opts = {
+            current_line_blame = true,
+        }
+    },
+
+    { 'echasnovski/mini.cursorword', version = '*', opts = {} },
+    { 'numtostr/comment.nvim',       opts = {} },
+    { 'jghauser/fold-cycle.nvim',    opts = {} },
+    { "nvchad/nvim-colorizer.lua",   opts = {} },
 
     -- lsp
     {

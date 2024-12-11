@@ -24,19 +24,8 @@ return require('packer').startup(function(use)
     use 'nvim-treesitter/playground'
 
     use {
-        'akinsho/bufferline.nvim',
-        tag = "v3.*",
-        requires = 'nvim-tree/nvim-web-devicons'
-    }
-
-    use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
-
-    use {
-        'numtostr/comment.nvim',
-        config = function() require('comment').setup() end
     }
 
     use {
@@ -44,23 +33,11 @@ return require('packer').startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     }
 
-    use({
-        'kylechui/nvim-surround',
-        tag = "*",
-        config = function()
-            require('nvim-surround').setup({})
-        end
-    })
-
     use { 'lewis6991/gitsigns.nvim' }
 
     use 'windwp/nvim-ts-autotag'
 
     use 'nvim-telescope/telescope-symbols.nvim'
-
-    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup()
-    end }
 
     use { 'echasnovski/mini.cursorword', config = function()
         require('mini.cursorword').setup()
