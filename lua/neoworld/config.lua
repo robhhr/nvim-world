@@ -58,12 +58,21 @@ require("lazy").setup({
         },
     },
 
+    -- {
+    --     "goolord/alpha-nvim",
+    --     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    --     config = function()
+    --         require("neoworld.plugins.alpha-nvim")
+    --     end,
+    -- },
+
     {
-        "goolord/alpha-nvim",
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
         config = function()
-            require("neoworld.plugins.alpha-nvim")
+            require("neoworld.plugins.dashboard-nvim")
         end,
+        dependencies = { { 'nvim-tree/nvim-web-devicons' } }
     },
 
     {
@@ -207,9 +216,16 @@ require("lazy").setup({
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
+        lazy = true,
         config = function()
             require("neoworld.plugins.codecompanion")
         end,
+        cmd = {
+            "CodeCompanion",
+            "CodeCompanionActions",
+            "CodeCompanionChat",
+            "CodeCompanionCmd",
+        },
     },
 
     {
@@ -225,6 +241,18 @@ require("lazy").setup({
         opts = {
             current_line_blame = true,
         }
+    },
+
+    {
+        "luckasRanarison/tailwind-tools.nvim",
+        name = "tailwind-tools",
+        build = ":UpdateRemotePlugins",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-telescope/telescope.nvim",
+            "neovim/nvim-lspconfig",
+        },
+        opts = {}
     },
 
     { 'echasnovski/mini.cursorword', version = '*', opts = {} },
