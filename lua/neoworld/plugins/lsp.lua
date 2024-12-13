@@ -45,7 +45,7 @@ mason_lspconfig.setup_handlers({
       end,
     })
   end,
-  
+
   ["intelephense"] = function()
     lspconfig.intelephense.setup({
       on_attach = function(client, bufnr)
