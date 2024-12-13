@@ -1,288 +1,288 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-    if vim.v.shell_error ~= 0 then
-        vim.api.nvim_echo({
-            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-            { out,                            "WarningMsg" },
-            { "\nPress any key to exit..." },
-        }, true, {})
-        vim.fn.getchar()
-        os.exit(1)
-    end
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out,                            "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
 
 require("lazy").setup({
-    {
-        "ellisonleao/gruvbox.nvim",
-        priority = 1000,
-        config = function()
-            require("neoworld.plugins.gruvbox")
-            vim.cmd([[colorscheme gruvbox]])
-        end,
-        opts = ...
-    },
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function()
+      require("neoworld.plugins.gruvbox")
+      vim.cmd([[colorscheme gruvbox]])
+    end,
+    opts = ...
+  },
 
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        config = function()
-            require("neoworld.plugins.treesitter")
-        end,
-    },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+      require("neoworld.plugins.treesitter")
+    end,
+  },
 
-    {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.8',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        config = function()
-            require("neoworld.plugins.telescope")
-        end,
-    },
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require("neoworld.plugins.telescope")
+    end,
+  },
 
-    {
-        "kdheepak/lazygit.nvim",
-        lazy = true,
-        cmd = {
-            "LazyGit",
-            "LazyGitConfig",
-            "LazyGitCurrentFile",
-            "LazyGitFilter",
-            "LazyGitFilterCurrentFile",
-        },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
     },
-
-    -- {
-    --     "goolord/alpha-nvim",
-    --     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    --     config = function()
-    --         require("neoworld.plugins.alpha-nvim")
-    --     end,
-    -- },
-
-    {
-        'nvimdev/dashboard-nvim',
-        event = 'VimEnter',
-        config = function()
-            require("neoworld.plugins.dashboard-nvim")
-        end,
-        dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+    dependencies = {
+      "nvim-lua/plenary.nvim",
     },
+  },
 
-    {
-        "Exafunction/codeium.vim",
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function()
-            require("neoworld.plugins.codeium")
-        end,
-    },
+  -- {
+  --     "goolord/alpha-nvim",
+  --     dependencies = { 'nvim-tree/nvim-web-devicons' },
+  --     config = function()
+  --         require("neoworld.plugins.alpha-nvim")
+  --     end,
+  -- },
 
-    {
-        'ThePrimeagen/harpoon',
-        config = function()
-            require("neoworld.plugins.harpoon")
-        end,
-    },
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require("neoworld.plugins.dashboard-nvim")
+    end,
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+  },
 
-    {
-        "nvim-tree/nvim-tree.lua",
-        version = "*",
-        lazy = false,
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            require("neoworld.plugins.nvim-tree")
-        end,
-    },
+  {
+    "Exafunction/codeium.vim",
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require("neoworld.plugins.codeium")
+    end,
+  },
 
-    {
-        'smoka7/hop.nvim',
-        version = "*",
-        opts = {
-            keys = 'etovxqpdygfblzhckisuran'
-        },
-        lazy = true,
-        cmd = {
-            "HopWord",
-        },
-    },
+  {
+    'ThePrimeagen/harpoon',
+    config = function()
+      require("neoworld.plugins.harpoon")
+    end,
+  },
 
-    {
-        "folke/twilight.nvim",
-        lazy = true,
-        cmd = {
-            "Twilight",
-            "TwilightEnable",
-            "TwilightDisable",
-        },
-        opts = {},
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
     },
+    config = function()
+      require("neoworld.plugins.nvim-tree")
+    end,
+  },
 
-    {
-        'folke/todo-comments.nvim',
-        requires = 'nvim-lua/plenary.nvim',
-        config = function()
-            require("neoworld.plugins.todo-comments")
-        end,
+  {
+    'smoka7/hop.nvim',
+    version = "*",
+    opts = {
+      keys = 'etovxqpdygfblzhckisuran'
     },
+    lazy = true,
+    cmd = {
+      "HopWord",
+    },
+  },
 
-    {
-        "kevinhwang91/nvim-ufo",
-        dependencies = { "kevinhwang91/promise-async" },
-        event = "VeryLazy",
-        init = function()
-            vim.o.foldcolumn = '1'
-            vim.o.foldlevel = 99
-            vim.o.foldlevelstart = 99
-            vim.o.foldenable = true
-        end,
-        opts = {
-            close_fold_kinds_for_ft = {
-                default = { 'imports', 'comment' },
-                json = { 'array' },
-                c = { 'comment', 'region' }
-            },
-        }
+  {
+    "folke/twilight.nvim",
+    lazy = true,
+    cmd = {
+      "Twilight",
+      "TwilightEnable",
+      "TwilightDisable",
     },
+    opts = {},
+  },
 
-    {
-        "kylechui/nvim-surround",
-        version = "*",
-        event = "VeryLazy",
-        opts = {}
-    },
+  {
+    'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require("neoworld.plugins.todo-comments")
+    end,
+  },
 
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,
-    },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = { "kevinhwang91/promise-async" },
+    event = "VeryLazy",
+    init = function()
+      vim.o.foldcolumn = '1'
+      vim.o.foldlevel = 99
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+    end,
+    opts = {
+      close_fold_kinds_for_ft = {
+        default = { 'imports', 'comment' },
+        json = { 'array' },
+        c = { 'comment', 'region' }
+      },
+    }
+  },
 
-    {
-        "uga-rosa/ccc.nvim",
-        opts = {},
-        lazy = true,
-        cmd = {
-            "CccConvert",
-            "CccHighlighterDisable",
-            "CccHighlighterEnable",
-            "CccHighlighterToggle",
-            "CccPick"
-        }
-    },
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    opts = {}
+  },
 
-    {
-        'akinsho/toggleterm.nvim',
-        version = "*",
-        config = true,
-        lazy = true,
-        cmd = {
-            "ToggleTerm",
-        },
-        opts = {
-            size = 10,
-            open_mapping = [[<c-z>]],
-            direction = 'horizontal',
-        },
-        keys = {
-            { "<C-z>", ":ToggleTerm<CR>", desc = "ToggleTerm" },
-        },
-    },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
 
-    {
-        "folke/trouble.nvim",
-        opts = {},
-        cmd = "Trouble",
-        keys = {
-            {
-                "<leader>xx",
-                "<cmd>Trouble diagnostics toggle focus=true<cr>",
-                desc = "Diagnostics (Trouble)",
-            },
-        },
-    },
+  {
+    "uga-rosa/ccc.nvim",
+    opts = {},
+    lazy = true,
+    cmd = {
+      "CccConvert",
+      "CccHighlighterDisable",
+      "CccHighlighterEnable",
+      "CccHighlighterToggle",
+      "CccPick"
+    }
+  },
 
-    {
-        "olimorris/codecompanion.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        },
-        lazy = true,
-        config = function()
-            require("neoworld.plugins.codecompanion")
-        end,
-        cmd = {
-            "CodeCompanion",
-            "CodeCompanionActions",
-            "CodeCompanionChat",
-            "CodeCompanionCmd",
-        },
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    config = true,
+    lazy = true,
+    cmd = {
+      "ToggleTerm",
     },
+    opts = {
+      size = 10,
+      open_mapping = [[<c-z>]],
+      direction = 'horizontal',
+    },
+    keys = {
+      { "<C-z>", ":ToggleTerm<CR>", desc = "ToggleTerm" },
+    },
+  },
 
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function()
-            require("neoworld.plugins.lualine")
-        end,
+  {
+    "folke/trouble.nvim",
+    opts = {},
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle focus=true<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
     },
+  },
 
-    {
-        "lewis6991/gitsigns.nvim",
-        opts = {
-            current_line_blame = true,
-        }
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
     },
+    lazy = true,
+    config = function()
+      require("neoworld.plugins.codecompanion")
+    end,
+    cmd = {
+      "CodeCompanion",
+      "CodeCompanionActions",
+      "CodeCompanionChat",
+      "CodeCompanionCmd",
+    },
+  },
 
-    {
-        "luckasRanarison/tailwind-tools.nvim",
-        name = "tailwind-tools",
-        build = ":UpdateRemotePlugins",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-telescope/telescope.nvim",
-            "neovim/nvim-lspconfig",
-        },
-        opts = {}
-    },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require("neoworld.plugins.lualine")
+    end,
+  },
 
-    { 'echasnovski/mini.cursorword', version = '*', opts = {} },
-    { 'numtostr/comment.nvim',       opts = {} },
-    { 'jghauser/fold-cycle.nvim',    opts = {} },
-    { "nvchad/nvim-colorizer.lua",   opts = {} },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      current_line_blame = true,
+    }
+  },
 
-    -- lsp
-    {
-        "williamboman/mason.nvim",
-        config = function()
-            require("neoworld.plugins.lsp")
-        end,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
-    },
-    { 'VonHeikemen/lsp-zero.nvim', branch = 'v4.x' },
-    -- lsp
+  { 'echasnovski/mini.cursorword', version = '*', opts = {} },
+  { 'numtostr/comment.nvim',       opts = {} },
+  { 'jghauser/fold-cycle.nvim',    opts = {} },
+  { "nvchad/nvim-colorizer.lua",   opts = {} },
 
-    -- cmp
-    {
-        "hrsh7th/nvim-cmp",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-nvim-lua",
-        "saadparwaiz1/cmp_luasnip",
-        "L3MON4D3/LuaSnip",
+  -- lsp
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("neoworld.plugins.lsp")
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  },
+  -- lsp
+
+  -- cmp
+  {
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-nvim-lua",
+    "saadparwaiz1/cmp_luasnip",
+    "L3MON4D3/LuaSnip",
+    "onsails/lspkind.nvim"
+  },
+  -- cmp
+
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim",
+      "neovim/nvim-lspconfig",
     },
-    -- cmp
+    opts = {}
+  },
 })

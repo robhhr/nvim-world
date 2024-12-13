@@ -1,3 +1,5 @@
+vim.g.have_nerd_font = true
+
 local options = {
     background = 'dark',
     backup = false,
@@ -5,6 +7,7 @@ local options = {
     breakindentopt = { 'shift:2', 'min:20', 'sbr' },
     cmdheight = 2,
     -- cursorline = true,
+    encoding = 'utf-8',
     endofline = true,
     expandtab = true,
     fileencoding = 'utf-8',
