@@ -107,8 +107,7 @@ mason_lspconfig.setup_handlers({
           buffer = bufnr,
           callback = function()
             if vim.g.format_on_save then
-              -- vim.lsp.buf.format({ bufnr = bufnr, async = false })
-              vim.lsp.buf.format({ async = false })
+              vim.lsp.buf.format({ bufnr = bufnr, async = false })
             end
           end,
         })
@@ -147,20 +146,18 @@ mason_lspconfig.setup_handlers({
       }),
       filetypes = { "css", "scss", "less", "html", "php" }, -- support for CSS and embedded CSS
       on_attach = function(client, bufnr)
-        -- Keybindings for LSP
         local opts = { noremap = true, silent = true }
         local buf_map = vim.api.nvim_buf_set_keymap
 
         buf_map(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
         buf_map(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
-        -- Enable format on save
         if client.server_capabilities.documentFormattingProvider then
           vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = bufnr,
             callback = function()
               if vim.g.format_on_save then
-                vim.lsp.buf.format({ async = false })
+                vim.lsp.buf.format({ bufnr = bufnr, async = false })
               end
             end,
           })
@@ -255,4 +252,3 @@ cmp.setup({
     { name = 'luasnip', keyword_length = 2 },
   },
 })
-

@@ -14,7 +14,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 require("lazy").setup({
   {
     "ellisonleao/gruvbox.nvim",
@@ -143,13 +142,16 @@ require("lazy").setup({
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
     end,
-    opts = {
-      close_fold_kinds_for_ft = {
-        default = { 'imports', 'comment' },
-        json = { 'array' },
-        c = { 'comment', 'region' }
-      },
-    }
+    -- opts = {
+    --   close_fold_kinds_for_ft = {
+    --     default = { 'imports', 'comment' },
+    --     json = { 'array' },
+    --     c = { 'comment', 'region' }
+    --   },
+    -- },
+    config = function()
+      require("neoworld.plugins.ufo")
+    end,
   },
 
   {
@@ -241,6 +243,13 @@ require("lazy").setup({
     opts = {
       current_line_blame = true,
     }
+  },
+
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true,
+    opts = {}
   },
 
   { 'echasnovski/mini.cursorword', version = '*', opts = {} },
