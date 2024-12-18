@@ -20,6 +20,7 @@ require("nvim-tree").setup({
         group_empty = false,
         highlight_git = true,
         highlight_modified = 'all',
+        highlight_opened_files = "all",
         indent_markers = {
             enable = true,
             inline_arrows = false,
@@ -42,7 +43,10 @@ require("nvim-tree").setup({
         },
     },
     view = {
-        side = "right",
+        number = true,
+        relativenumber = true,
+        side = "left",
         width = "100%",
     },
 })
+

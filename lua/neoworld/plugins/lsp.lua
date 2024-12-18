@@ -144,7 +144,7 @@ mason_lspconfig.setup_handlers({
           },
         },
       }),
-      filetypes = { "css", "scss", "less", "html", "php" }, -- support for CSS and embedded CSS
+      filetypes = { "css", "scss", "less" },
       on_attach = function(client, bufnr)
         local opts = { noremap = true, silent = true }
         local buf_map = vim.api.nvim_buf_set_keymap
@@ -246,9 +246,9 @@ cmp.setup({
     })
   },
   sources = {
+    { name = 'luasnip', keyword_length = 2 },
     { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'buffer',  keyword_length = 3 },
-    { name = 'luasnip', keyword_length = 2 },
   },
 })

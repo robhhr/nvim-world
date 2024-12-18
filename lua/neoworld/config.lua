@@ -142,16 +142,16 @@ require("lazy").setup({
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
     end,
-    -- opts = {
-    --   close_fold_kinds_for_ft = {
-    --     default = { 'imports', 'comment' },
-    --     json = { 'array' },
-    --     c = { 'comment', 'region' }
-    --   },
-    -- },
-    config = function()
-      require("neoworld.plugins.ufo")
-    end,
+    opts = {
+      close_fold_kinds_for_ft = {
+        default = { 'imports', 'comment' },
+        json = { 'array' },
+        c = { 'comment', 'region' }
+      },
+    },
+    -- config = function()
+    --   require("neoworld.plugins.ufo")
+    -- end,
   },
 
   {
@@ -279,7 +279,7 @@ require("lazy").setup({
     "hrsh7th/cmp-nvim-lua",
     "saadparwaiz1/cmp_luasnip",
     "L3MON4D3/LuaSnip",
-    "onsails/lspkind.nvim"
+    "onsails/lspkind.nvim",
   },
   -- cmp
 
