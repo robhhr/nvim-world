@@ -66,12 +66,19 @@ mason_lspconfig.setup_handlers({
   ["ts_ls"] = function()
     lspconfig.ts_ls.setup({
       on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = false -- Eslint handles formatting
+        -- eslint handles formatting
+        client.server_capabilities.documentFormattingProvider = false
+
+        -- override automatic handlers to disable unwanted jumps
+        vim.lsp.handlers['textDocument/definition'] = function() end
+        vim.lsp.handlers['textDocument/references'] = function() end
+
         local opts = { noremap = true, silent = true }
         local buf_map = vim.api.nvim_buf_set_keymap
 
         buf_map(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
         buf_map(bufnr, "n", "<C-[>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+        buf_map(bufnr, "n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
       end,
     })
   end,
