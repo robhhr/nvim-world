@@ -9,7 +9,8 @@ function ToggleFormatOnSave()
   end
 end
 
-vim.api.nvim_set_keymap('n', '<leader>fp', ':!prettier --write %<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fp', ':!./node_modules/.bin/prettier --write %<CR>',
+  { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>fm', ':lua ToggleFormatOnSave()<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_create_augroup("FormatOnSaveGroup", { clear = true })
