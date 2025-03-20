@@ -151,6 +151,13 @@ mason_lspconfig.setup_handlers({
           },
         },
       }),
+      settings = {
+        css = {
+          lint = {
+            unknownAtRules = "ignore"
+          }
+        }
+      },
       filetypes = { "css", "scss", "less" },
       on_attach = function(client, bufnr)
         local opts = { noremap = true, silent = true }
