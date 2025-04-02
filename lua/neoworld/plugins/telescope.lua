@@ -1,6 +1,6 @@
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
-    return
+  return
 end
 
 local builtin = require('telescope.builtin')
@@ -12,7 +12,7 @@ vim.keymap.set('n', '<leader>ll', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set('n', '<leader>gp', function()
-    builtin.grep_string({ search = vim.fn.input("grep_string >") });
+  builtin.grep_string({ search = vim.fn.input("grep_string >") });
 end)
 vim.keymap.set('n', '<leader><leader>e', builtin.symbols, {})
 
@@ -20,30 +20,24 @@ vim.keymap.set('n', '<leader><leader>e', builtin.symbols, {})
 -- telescope.load_extension('media_files')
 
 telescope.setup({
-    defaults = {
-        path_display = { "absolute" },
-        file_ignore_patterns = {
-            ".git/",
-            "node_modules/*",
-            "^wp-admin/",
-            "^wp-includes/",
-        },
+  defaults = {
+    path_display = { "absolute" },
+  },
+  pickers = {
+    find_files = {
+      theme = 'dropdown',
     },
-    pickers = {
-        find_files = {
-            theme = 'dropdown',
-        },
-        git_files = {
-            theme = 'dropdown'
-        },
-        live_grep = {
-            theme = 'dropdown'
-        },
-        buffers = {
-            theme = 'dropdown'
-        },
-        current_buffer_fuzzy_find = {
-            theme = 'dropdown'
-        },
-    }
+    git_files = {
+      theme = 'dropdown'
+    },
+    live_grep = {
+      theme = 'dropdown'
+    },
+    buffers = {
+      theme = 'dropdown'
+    },
+    current_buffer_fuzzy_find = {
+      theme = 'dropdown'
+    },
+  }
 })
