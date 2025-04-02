@@ -35,6 +35,8 @@ keymap.set("n", "<C-q>", ":bdelete! %<CR>")
 
 keymap.set("n", "<leader><Space>", ":Twilight<CR>")
 
+keymap.set("n", "<leader>m", ":RenderMarkdown toggle<CR>")
+
 keymap.set('n', '<tab>',
   function()
     return require('fold-cycle').open()
