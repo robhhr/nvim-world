@@ -16,11 +16,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "Mofiqul/dracula.nvim",
+    "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()
-      require("neoworld.plugins.dracula")
-      vim.cmd([[colorscheme dracula]])
+      require("neoworld.plugins.gruvbox")
+      vim.cmd([[colorscheme gruvbox]])
     end,
     opts = ...
   },
