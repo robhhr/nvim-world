@@ -16,6 +16,7 @@ mason_lspconfig.setup({
     'cssls',
     'html',
     'vimls',
+    'graphql'
   },
 })
 
@@ -198,6 +199,21 @@ mason_lspconfig.setup_handlers({
 
         buf_map(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
         buf_map(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+      end,
+    })
+  end,
+
+  ["graphql"] = function()
+    lspconfig.graphql.setup({
+      cmd = { "graphql-lsp", "server", "-m", "stream" }, -- usually detected automatically, but safe to specify
+      filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
+      root_dir = lspconfig.util.root_pattern(".graphqlrc*", "graphql.config.*", ".git"),
+      on_attach = function(client, bufnr)
+        local opts = { noremap = true, silent = true }
+        local buf_map = vim.api.nvim_buf_set_keymap
+
+        buf_map(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+        buf_map(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
       end,
     })
   end,
