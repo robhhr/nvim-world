@@ -38,17 +38,16 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     cmd = "Telescope",
+    keys = {
+      { "<leader>ff", function() require("telescope.builtin").find_files() end,                desc = "Telescope: Find Files" },
+      { "<leader>gg", function() require("telescope.builtin").git_files() end,                 desc = "Telescope: Git Files" },
+      { "<leader>ll", function() require("telescope.builtin").live_grep() end,                 desc = "Telescope: Live Grep" },
+      { "<leader>b",  function() require("telescope.builtin").buffers() end,                   desc = "Telescope: Buffers" },
+      { "<leader>/",  function() require("telescope.builtin").current_buffer_fuzzy_find() end, desc = "Telescope: Fuzzy Find" },
+    },
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("neoworld.plugins.telescope")
-    end,
-  },
-
-  {
-    "Exafunction/codeium.vim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("neoworld.plugins.codeium")
     end,
   },
 
