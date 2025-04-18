@@ -57,23 +57,6 @@ require("lazy").setup({
     },
   },
 
-  -- {
-  --     "goolord/alpha-nvim",
-  --     dependencies = { 'nvim-tree/nvim-web-devicons' },
-  --     config = function()
-  --         require("neoworld.plugins.alpha-nvim")
-  --     end,
-  -- },
-
-  {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-      require("neoworld.plugins.dashboard-nvim")
-    end,
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
-  },
-
   {
     "Exafunction/codeium.vim",
     dependencies = { 'nvim-tree/nvim-web-devicons' },
