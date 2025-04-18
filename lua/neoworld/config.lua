@@ -17,16 +17,17 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   {
     "ellisonleao/gruvbox.nvim",
+    lazy = false,
     priority = 1000,
     config = function()
       require("neoworld.plugins.gruvbox")
       vim.cmd([[colorscheme gruvbox]])
     end,
-    opts = ...
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
+    event = "BufReadPost",
     build = ":TSUpdate",
     config = function()
       require("neoworld.plugins.treesitter")
@@ -34,39 +35,29 @@ require("lazy").setup({
   },
 
   {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    cmd = "Telescope",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("neoworld.plugins.telescope")
     end,
   },
 
   {
-    "kdheepak/lazygit.nvim",
-    lazy = true,
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
-
-  {
     "Exafunction/codeium.vim",
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("neoworld.plugins.codeium")
     end,
   },
 
   {
-    'ThePrimeagen/harpoon',
+    "ThePrimeagen/harpoon",
+    keys = {
+      { "<leader>a", function() require("harpoon.mark").add_file() end,        desc = "Harpoon add file" },
+      { "<C-e>",     function() require("harpoon.ui").toggle_quick_menu() end, desc = "Harpoon quick menu" },
+    },
     config = function()
       require("neoworld.plugins.harpoon")
     end,
@@ -74,42 +65,39 @@ require("lazy").setup({
 
   {
     "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    keys = {
+      { "<leader><Tab>", "<cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
     },
+    version = "*",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("neoworld.plugins.nvim-tree")
     end,
   },
 
   {
-    'smoka7/hop.nvim',
+    "smoka7/hop.nvim",
     version = "*",
-    opts = {
-      keys = 'etovxqpdygfblzhckisuran'
+    cmd = { "HopWord" },
+    keys = {
+      { "<leader>h", "<cmd>HopWord<CR>", desc = "Hop to Word" },
     },
-    lazy = true,
-    cmd = {
-      "HopWord",
-    },
+    opts = { keys = "etovxqpdygfblzhckisuran" },
   },
 
   {
     "folke/twilight.nvim",
-    lazy = true,
-    cmd = {
-      "Twilight",
-      "TwilightEnable",
-      "TwilightDisable",
+    cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
+    keys = {
+      { "<leader><Space>", "<cmd>Twilight<CR>", desc = "Toggle Twilight" },
     },
     opts = {},
   },
 
   {
-    'folke/todo-comments.nvim',
-    requires = 'nvim-lua/plenary.nvim',
+    "folke/todo-comments.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require("neoworld.plugins.todo-comments")
     end,
@@ -119,6 +107,10 @@ require("lazy").setup({
     "kevinhwang91/nvim-ufo",
     dependencies = { "kevinhwang91/promise-async" },
     event = "VeryLazy",
+    keys = {
+      { "<tab>",   function() return require("fold-cycle").open() end,  desc = "Fold-cycle open",  silent = true },
+      { "<s-tab>", function() return require("fold-cycle").close() end, desc = "Fold-cycle close", silent = true },
+    },
     init = function()
       vim.o.foldcolumn = '1'
       vim.o.foldlevel = 99
@@ -132,114 +124,90 @@ require("lazy").setup({
         c = { 'comment', 'region' }
       },
     },
-    -- config = function()
-    --   require("neoworld.plugins.ufo")
-    -- end,
   },
 
-  {
-    "kylechui/nvim-surround",
-    version = "*",
-    event = "VeryLazy",
-    opts = {}
-  },
+  { "kylechui/nvim-surround",      version = "*",         event = "VeryLazy", opts = {} },
 
   {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    ft = "markdown",
+    keys = {
+      { "<leader>m", ":RenderMarkdown toggle<CR>", desc = "Toggle Markdown Preview" },
+    },
     opts = {},
   },
 
   {
     "uga-rosa/ccc.nvim",
+    cmd = { "CccConvert", "CccHighlighterDisable", "CccHighlighterEnable", "CccHighlighterToggle", "CccPick" },
     opts = {},
-    lazy = true,
-    cmd = {
-      "CccConvert",
-      "CccHighlighterDisable",
-      "CccHighlighterEnable",
-      "CccHighlighterToggle",
-      "CccPick"
-    }
   },
 
   {
-    'akinsho/toggleterm.nvim',
+    "akinsho/toggleterm.nvim",
     version = "*",
-    config = true,
-    lazy = true,
-    cmd = {
-      "ToggleTerm",
+    cmd = { "ToggleTerm" },
+    keys = {
+      { "<C-z>", "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
     },
     opts = {
       size = 10,
       open_mapping = [[<c-z>]],
-      direction = 'horizontal',
-    },
-    keys = {
-      { "<C-z>", ":ToggleTerm<CR>", desc = "ToggleTerm" },
+      direction = "horizontal",
     },
   },
 
   {
     "folke/trouble.nvim",
-    opts = {},
     cmd = "Trouble",
     keys = {
-      {
-        "<leader>xx",
-        "<cmd>Trouble diagnostics toggle focus=true<cr>",
-        desc = "Diagnostics (Trouble)",
-      },
+      { "<leader>xx", "<cmd>Trouble diagnostics toggle focus=true<CR>", desc = "Trouble diagnostics" },
     },
+    opts = {},
   },
 
   {
     "olimorris/codecompanion.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    lazy = true,
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
+    cmd = { "CodeCompanion", "CodeCompanionActions", "CodeCompanionChat", "CodeCompanionCmd" },
     config = function()
       require("neoworld.plugins.codecompanion")
     end,
-    cmd = {
-      "CodeCompanion",
-      "CodeCompanionActions",
-      "CodeCompanionChat",
-      "CodeCompanionCmd",
-    },
   },
 
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("neoworld.plugins.lualine")
     end,
   },
 
+  -- git related
   {
     "lewis6991/gitsigns.nvim",
-    opts = {
-      current_line_blame = true,
-    }
+    opts = { current_line_blame = true },
   },
 
   {
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    config = true,
-    opts = {}
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit", "LazyGitConfig", "LazyGitCurrentFile", "LazyGitFilter", "LazyGitFilterCurrentFile"
+    },
+    keys = {
+      { "<leader>z", "<cmd>LazyGit<CR>", desc = "Open LazyGit" },
+    },
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
 
-  { 'echasnovski/mini.cursorword', version = '*', opts = {} },
-  { 'numtostr/comment.nvim',       opts = {} },
-  { 'jghauser/fold-cycle.nvim',    opts = {} },
-  { "nvchad/nvim-colorizer.lua",   opts = {} },
+  { "windwp/nvim-autopairs",       event = "InsertEnter", config = true,      opts = {} },
+
+  -- misc
+  { "echasnovski/mini.cursorword", version = "*",         opts = {} },
+  { "numToStr/Comment.nvim",       opts = {} },
+  { "jghauser/fold-cycle.nvim",    opts = {} },
+  { "NvChad/nvim-colorizer.lua",   opts = {} },
 
   -- lsp
   {
@@ -248,34 +216,21 @@ require("lazy").setup({
       require("neoworld.plugins.lsp")
     end,
   },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-  },
-  -- lsp
+  { "williamboman/mason-lspconfig.nvim" },
+  { "neovim/nvim-lspconfig" },
 
   -- cmp
   {
     "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-nvim-lua",
-    "saadparwaiz1/cmp_luasnip",
-    "L3MON4D3/LuaSnip",
-    "onsails/lspkind.nvim",
-  },
-  -- cmp
-
-  {
-    "luckasRanarison/tailwind-tools.nvim",
-    name = "tailwind-tools",
-    build = ":UpdateRemotePlugins",
+    event = "InsertEnter",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-telescope/telescope.nvim",
-      "neovim/nvim-lspconfig",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lua",
+      "saadparwaiz1/cmp_luasnip",
+      "L3MON4D3/LuaSnip",
+      "onsails/lspkind.nvim",
     },
-    opts = {}
   },
 })
