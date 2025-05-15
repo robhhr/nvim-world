@@ -14,7 +14,7 @@ sm.setup({
     suggestion_color = "#458588",
     cterm = 244,
   },
-  log_level = "info",                -- set to "off" to disable logging completely
+  log_level = "off",                 -- set to "off" to disable logging completely
   disable_inline_completion = false, -- disables inline completion for use with cmp
   disable_keymaps = false,           -- disables built in keymaps
   condition = function()
