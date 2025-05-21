@@ -20,83 +20,43 @@ mason_lspconfig.setup({
   },
 })
 
+-- better to reuse since a lot of the configs are the same
+local function common_on_attach(_, bufnr)
+  local opts = { noremap = true, silent = true }
+  local buf_map = vim.api.nvim_buf_set_keymap
+
+  buf_map(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  buf_map(bufnr, "n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  buf_map(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  -- buf_map(bufnr, "n", "<C-[>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+end
+
 mason_lspconfig.setup_handlers({
   function(server_name)
     lspconfig[server_name].setup({
-      on_attach = function(client, bufnr)
-        local opts = { noremap = true, silent = true }
-        local buf_map = vim.api.nvim_buf_set_keymap
-
-        buf_map(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-        buf_map(bufnr, "n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-        buf_map(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-        buf_map(bufnr, "n", "<C-[>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-
-        if client.server_capabilities.documentFormattingProvider then
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            callback = function()
-              if vim.g.format_on_save then
-                -- vim.lsp.buf.format({ bufnr = bufnr, async = false })
-                vim.lsp.buf.format({ async = false })
-              end
-            end,
-          })
-        end
-      end,
+      on_attach = common_on_attach,
     })
   end,
 
   ["intelephense"] = function()
     lspconfig.intelephense.setup({
-      on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = true
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          buffer = bufnr,
-          callback = function()
-            if vim.g.format_on_save then
-              vim.lsp.buf.format({ async = false })
-              -- vim.lsp.buf.format({ bufnr = bufnr, async = false })
-            end
-          end,
-        })
-      end
+      on_attach = common_on_attach,
     })
   end,
 
   ["ts_ls"] = function()
     lspconfig.ts_ls.setup({
-      on_attach = function(client, bufnr)
-        -- eslint handles formatting
-        client.server_capabilities.documentFormattingProvider = false
-
-        -- override automatic handlers to disable unwanted jumps
+      on_attach = function(_, bufnr)
         vim.lsp.handlers['textDocument/definition'] = function() end
         vim.lsp.handlers['textDocument/references'] = function() end
-
-        local opts = { noremap = true, silent = true }
-        local buf_map = vim.api.nvim_buf_set_keymap
-
-        buf_map(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-        buf_map(bufnr, "n", "<C-[>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-        buf_map(bufnr, "n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
+        common_on_attach(_, bufnr)
       end,
     })
   end,
 
   ["eslint"] = function()
     lspconfig.eslint.setup({
-      on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = true
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          buffer = bufnr,
-          callback = function()
-            if vim.g.format_on_save then
-              vim.cmd([[EslintFixAll]])
-            end
-          end,
-        })
-      end,
+      on_attach = common_on_attach,
     })
   end,
 
@@ -109,17 +69,7 @@ mason_lspconfig.setup_handlers({
           telemetry = { enable = false },
         },
       },
-      on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = true
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          buffer = bufnr,
-          callback = function()
-            if vim.g.format_on_save then
-              vim.lsp.buf.format({ bufnr = bufnr, async = false })
-            end
-          end,
-        })
-      end,
+      on_attach = common_on_attach,
     })
   end,
 
@@ -138,6 +88,7 @@ mason_lspconfig.setup_handlers({
         "blade",
         "markdown",
       },
+      on_attach = common_on_attach,
     })
   end,
 
@@ -160,24 +111,7 @@ mason_lspconfig.setup_handlers({
         }
       },
       filetypes = { "css", "scss", "less" },
-      on_attach = function(client, bufnr)
-        local opts = { noremap = true, silent = true }
-        local buf_map = vim.api.nvim_buf_set_keymap
-
-        buf_map(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-        buf_map(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-
-        if client.server_capabilities.documentFormattingProvider then
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            callback = function()
-              if vim.g.format_on_save then
-                vim.lsp.buf.format({ bufnr = bufnr, async = false })
-              end
-            end,
-          })
-        end
-      end,
+      on_attach = common_on_attach,
     })
   end,
 
@@ -192,29 +126,16 @@ mason_lspconfig.setup_handlers({
           },
         },
       }),
-      on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = true
-        local opts = { noremap = true, silent = true }
-        local buf_map = vim.api.nvim_buf_set_keymap
-
-        buf_map(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-        buf_map(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-      end,
+      on_attach = common_on_attach,
     })
   end,
 
   ["graphql"] = function()
     lspconfig.graphql.setup({
-      cmd = { "graphql-lsp", "server", "-m", "stream" }, -- usually detected automatically, but safe to specify
+      cmd = { "graphql-lsp", "server", "-m", "stream" },
       filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
       root_dir = lspconfig.util.root_pattern(".graphqlrc*", "graphql.config.*", ".git"),
-      on_attach = function(client, bufnr)
-        local opts = { noremap = true, silent = true }
-        local buf_map = vim.api.nvim_buf_set_keymap
-
-        buf_map(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-        buf_map(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-      end,
+      on_attach = common_on_attach,
     })
   end,
 })

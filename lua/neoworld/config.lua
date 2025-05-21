@@ -224,6 +224,12 @@ require("lazy").setup({
   },
   { "williamboman/mason-lspconfig.nvim" },
   { "neovim/nvim-lspconfig" },
+  {
+    "stevearc/conform.nvim",
+    config = function()
+      require("neoworld.plugins.conform-nvim")
+    end
+  },
 
   -- cmp
   {
