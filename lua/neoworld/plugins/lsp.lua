@@ -40,6 +40,11 @@ mason_lspconfig.setup_handlers({
 
   ["intelephense"] = function()
     lspconfig.intelephense.setup({
+      root_dir = lspconfig.util.root_pattern(
+        "wp-config.php",
+        "wp-includes",
+        "index.php"
+      ),
       on_attach = common_on_attach,
     })
   end,
