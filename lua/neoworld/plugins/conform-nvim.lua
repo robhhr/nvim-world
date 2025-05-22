@@ -14,7 +14,7 @@ conform.setup({
   end,
   formatters_by_ft = {
     lua = { "stylua" },
-    php = { "php_cs_fixer" },
+    php = { "intelephense" },
     javascript = { "eslint_d", "prettier" },
     typescript = { "eslint_d", "prettier" },
     javascriptreact = { "eslint_d", "prettier" },
@@ -31,15 +31,6 @@ conform.setup({
       command = "./node_modules/.bin/prettier",
       args = { "--stdin-filepath", "$FILENAME" },
       cwd = require("conform.util").root_file({ ".prettierrc", "package.json", ".git" }),
-    },
-    php_cs_fixer = {
-      command = "./vendor/bin/php-cs-fixer",
-      args = { "fix", "--quiet", "--using-cache=no", "$FILENAME" },
-      stdin = false, -- it edits files directly
-      cwd = require("conform.util").root_file({ ".php-cs-fixer.php", "composer.json", ".git" }),
-      condition = function(_)
-        return vim.fn.filereadable("./vendor/bin/php-cs-fixer") == 1
-      end,
     },
   },
 })
