@@ -14,7 +14,7 @@ conform.setup({
   end,
   formatters_by_ft = {
     lua = { "stylua" },
-    php = { "phpcbf_local", "phpcbf" },
+    php = { "php_cs_fixer" },
     javascript = { "eslint_d", "prettier" },
     typescript = { "eslint_d", "prettier" },
     javascriptreact = { "eslint_d", "prettier" },
@@ -32,13 +32,13 @@ conform.setup({
       args = { "--stdin-filepath", "$FILENAME" },
       cwd = require("conform.util").root_file({ ".prettierrc", "package.json", ".git" }),
     },
-    phpcbf_local = {
-      command = "./vendor/bin/phpcbf",
-      args = { "--stdin-path=$FILENAME", "-" },
-      cwd = require("conform.util").root_file({ "composer.json", "phpcs.xml", ".git" }),
+    php_cs_fixer = {
+      command = "./vendor/bin/php-cs-fixer",
+      args = { "fix", "--quiet", "--using-cache=no", "$FILENAME" },
+      stdin = false, -- it edits files directly
+      cwd = require("conform.util").root_file({ ".php-cs-fixer.php", "composer.json", ".git" }),
       condition = function(_)
-        -- only use if vendor/bin/phpcbf exists
-        return vim.fn.filereadable("./vendor/bin/phpcbf") == 1
+        return vim.fn.filereadable("./vendor/bin/php-cs-fixer") == 1
       end,
     },
   },
