@@ -190,6 +190,14 @@ require("lazy").setup({
     end,
   },
 
+  {
+    "bngarren/checkmate.nvim",
+    ft = "markdown",
+    config = function()
+      require("neoworld.plugins.checkmate")
+    end,
+  },
+
   -- git related
   {
     "lewis6991/gitsigns.nvim",
