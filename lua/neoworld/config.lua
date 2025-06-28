@@ -132,9 +132,11 @@ require("lazy").setup({
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     ft = "markdown",
     keys = {
-      { "<leader>m", ":RenderMarkdown toggle<CR>", desc = "Toggle Markdown Preview" },
+      { "<leader>rm", ":RenderMarkdown toggle<CR>", desc = "Toggle Markdown Preview" },
     },
-    opts = {},
+    config = function()
+      require("neoworld.plugins.markdown")
+    end,
   },
 
   {

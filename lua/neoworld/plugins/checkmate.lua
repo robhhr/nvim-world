@@ -6,6 +6,8 @@ end
 
 checkmate.setup({
   files = {
+    "todo.md",
+    "TODO.md",
     "*.todo.md"
   },
   keys = {
@@ -39,5 +41,35 @@ checkmate.setup({
       desc = "Archive checked/completed todo items (move to bottom section)",
       modes = { "n" },
     },
+  },
+  style = {
+    CheckmateCheckedMarker = { fg = "#8ec07c", bold = true },
+    CheckmateUncheckedMarker = { fg = "#fb4934", bold = true },
+    CheckmateTodoCountIndicator = { fg = "#fabd2f", bold = true },
+  },
+  metadata = {
+    priority = {
+      style = function(context)
+        local value = context.value:lower()
+        if value == "high" then
+          return { fg = "#fb4934", bold = true }
+        elseif value == "medium" then
+          return { fg = "#fe8019" }
+        elseif value == "low" then
+          return { fg = "#83a598" }
+        else -- fallback
+          return { fg = "#83a598" }
+        end
+      end,
+    },
+    started = {
+      style = { fg = "#b8bb26" },
+    },
+    done = {
+      style = { fg = "#b8bb26" },
+    },
+  },
+  linter = {
+    enabled = false,
   }
 })
