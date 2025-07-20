@@ -132,9 +132,11 @@ require("lazy").setup({
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     ft = "markdown",
     keys = {
-      { "<leader>m", ":RenderMarkdown toggle<CR>", desc = "Toggle Markdown Preview" },
+      { "<leader>rm", ":RenderMarkdown toggle<CR>", desc = "Toggle Markdown Preview" },
     },
-    opts = {},
+    config = function()
+      require("neoworld.plugins.markdown")
+    end,
   },
 
   {
@@ -194,6 +196,14 @@ require("lazy").setup({
     end,
   },
 
+  {
+    "bngarren/checkmate.nvim",
+    ft = "markdown",
+    config = function()
+      require("neoworld.plugins.checkmate")
+    end,
+  },
+
   -- git related
   {
     "lewis6991/gitsigns.nvim",
@@ -228,6 +238,12 @@ require("lazy").setup({
   },
   { "williamboman/mason-lspconfig.nvim" },
   { "neovim/nvim-lspconfig" },
+  {
+    "stevearc/conform.nvim",
+    config = function()
+      require("neoworld.plugins.conform-nvim")
+    end
+  },
 
   -- cmp
   {
