@@ -167,13 +167,6 @@ require("lazy").setup({
   },
 
   {
-    "supermaven-inc/supermaven-nvim",
-    config = function()
-      require("neoworld.plugins.sm")
-    end,
-  },
-
-  {
     "olimorris/codecompanion.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
     cmd = { "CodeCompanion", "CodeCompanionActions", "CodeCompanionChat", "CodeCompanionCmd" },
