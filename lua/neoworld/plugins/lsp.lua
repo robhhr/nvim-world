@@ -16,6 +16,8 @@ mason_lspconfig.setup({
     'cssls',
     'html',
     'vimls',
+    'pyright',
+    'ruff',
     'graphql'
   },
 })
@@ -132,6 +134,23 @@ mason_lspconfig.setup_handlers({
         },
       }),
       on_attach = common_on_attach,
+    })
+  end,
+
+  ["pyright"] = function()
+    lspconfig.pyright.setup({
+      on_attach = common_on_attach,
+    })
+  end,
+
+  ["ruff"] = function()
+    lspconfig.ruff.setup({
+      on_attach = common_on_attach,
+      init_options = {
+        settings = {
+          args = {}, -- you can pass config args here if not using pyproject.toml
+        },
+      },
     })
   end,
 

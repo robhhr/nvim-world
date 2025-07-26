@@ -25,12 +25,18 @@ conform.setup({
     css = { "prettier" },
     scss = { "prettier" },
     markdown = { "prettier" },
+    python = { "ruff" },
   },
   formatters = {
     prettier = {
       command = "./node_modules/.bin/prettier",
       args = { "--stdin-filepath", "$FILENAME" },
       cwd = require("conform.util").root_file({ ".prettierrc", "package.json", ".git" }),
+    },
+    ruff = {
+      command = "ruff",
+      args = { "format", "-" },
+      cwd = require("conform.util").root_file({ "pyproject.toml", ".git" }),
     },
   },
 })
