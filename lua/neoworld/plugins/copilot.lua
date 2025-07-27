@@ -1,7 +1,14 @@
 local global = vim.g
 local keymap = vim.keymap
 
-global.copilot_filetypes = { ["*"] = true, xml = false }
+global.copilot_filetypes = {
+  ["env"] = false,
+  ["json"] = false,
+  ["sh"] = false,
+  ["markdown"] = false,
+  ["text"] = false,
+  ["xml"] = false,
+}
 
 global.copilot_no_tab_map = true
 
