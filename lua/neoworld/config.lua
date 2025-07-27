@@ -86,15 +86,6 @@ require("lazy").setup({
   },
 
   {
-    "folke/twilight.nvim",
-    cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
-    keys = {
-      { "<leader><Space>", "<cmd>Twilight<CR>", desc = "Toggle Twilight" },
-    },
-    opts = {},
-  },
-
-  {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
@@ -125,7 +116,7 @@ require("lazy").setup({
     },
   },
 
-  { "kylechui/nvim-surround",      version = "*",         event = "VeryLazy", opts = {} },
+  { "kylechui/nvim-surround", version = "*", event = "VeryLazy", opts = {} },
 
   {
     "MeanderingProgrammer/render-markdown.nvim",
@@ -187,25 +178,13 @@ require("lazy").setup({
     end
   },
 
-  {
-    "j-hui/fidget.nvim",
-    opts = {
-    },
-  },
+  { "j-hui/fidget.nvim",      opts = {} },
 
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("neoworld.plugins.lualine")
-    end,
-  },
-
-  {
-    "bngarren/checkmate.nvim",
-    ft = "markdown",
-    config = function()
-      require("neoworld.plugins.checkmate")
     end,
   },
 
@@ -226,7 +205,7 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" },
   },
 
-  { "windwp/nvim-autopairs",       event = "InsertEnter", config = true,      opts = {} },
+  { "windwp/nvim-autopairs",       event = "InsertEnter", config = true, opts = {} },
 
   -- misc
   { "echasnovski/mini.cursorword", version = "*",         opts = {} },
