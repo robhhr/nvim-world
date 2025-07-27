@@ -169,13 +169,9 @@ require("lazy").setup({
   },
 
   {
-    "Exafunction/windsurf.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
+    "github/copilot.vim",
     config = function()
-      require("neoworld.plugins.ws")
+      require("neoworld.plugins.copilot")
     end
   },
 
@@ -186,6 +182,12 @@ require("lazy").setup({
     config = function()
       require("neoworld.plugins.codecompanion")
     end,
+  },
+
+  {
+    "j-hui/fidget.nvim",
+    opts = {
+    },
   },
 
   {
