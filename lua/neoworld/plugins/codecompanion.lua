@@ -24,30 +24,3 @@ require("codecompanion").setup({
   },
 })
 
-local fidget = require("fidget")
-local spinner = require("fidget.spinner").animate("dots", 1.2)
-local group = vim.api.nvim_create_augroup("CodeCompanionFidget", {})
-
-require("fidget.notification").set_config("CodeCompanion", {
-  name = "",
-  icon = "",
-  info_annote = "",
-})
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = "CodeCompanionRequestStarted",
-  group = group,
-  callback = function(event)
-    local name = event.data.adapter.name or "unknown"
-    local model = event.data.adapter.model or "unknown"
-    local msg = ("%s\n%s"):format(name, model)
-
-    fidget.notify(msg, vim.log.levels.INFO, {
-      group = "CodeCompanion",
-      icon = spinner,
-      icon_on_left = true,
-      skip_history = true,
-      annote = nil,
-    })
-  end,
-})

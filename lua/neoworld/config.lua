@@ -182,6 +182,9 @@ require("lazy").setup({
     config = function()
       require("neoworld.plugins.codecompanion")
     end,
+    init = function()
+      require("neoworld.plugins.codecompanion-spinner"):init()
+    end
   },
 
   {
