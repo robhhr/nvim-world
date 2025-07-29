@@ -35,6 +35,15 @@ require("lazy").setup({
   },
 
   {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('neoworld.plugins.dashboard')
+    end,
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+  },
+
+  {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     cmd = "Telescope",
