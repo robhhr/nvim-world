@@ -125,7 +125,7 @@ require("lazy").setup({
     },
   },
 
-  { "kylechui/nvim-surround", version = "*", event = "VeryLazy", opts = {} },
+  { "kylechui/nvim-surround",      version = "*",         event = "VeryLazy", opts = {} },
 
   {
     "MeanderingProgrammer/render-markdown.nvim",
@@ -182,12 +182,7 @@ require("lazy").setup({
     config = function()
       require("neoworld.plugins.codecompanion")
     end,
-    init = function()
-      require("neoworld.plugins.codecompanion-spinner"):init()
-    end
   },
-
-  { "j-hui/fidget.nvim",      opts = {} },
 
   {
     "nvim-lualine/lualine.nvim",
@@ -214,7 +209,7 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" },
   },
 
-  { "windwp/nvim-autopairs",       event = "InsertEnter", config = true, opts = {} },
+  { "windwp/nvim-autopairs",       event = "InsertEnter", config = true,      opts = {} },
 
   -- misc
   { "echasnovski/mini.cursorword", version = "*",         opts = {} },
