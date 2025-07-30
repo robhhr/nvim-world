@@ -7,6 +7,7 @@ dashboard.setup({
   theme = 'hyper',
   config = {
     header = {
+      '',
       ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
       ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
       ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
@@ -17,6 +18,9 @@ dashboard.setup({
       '    ──────────────────────────────────────────────     ',
       ''
     },
+    packages = {
+      enable = false, -- disable package count
+    },
     shortcut = {
       { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
       {
@@ -26,12 +30,6 @@ dashboard.setup({
         group = 'Label',
         action = 'Telescope find_files',
         key = 'f',
-      },
-      {
-        desc = ' Apps',
-        group = 'DiagnosticHint',
-        action = 'Telescope app',
-        key = 'a',
       },
       {
         desc = ' dotfiles',
