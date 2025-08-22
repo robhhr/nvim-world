@@ -35,6 +35,19 @@ require("lazy").setup({
   },
 
   {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("neoworld.plugins.oil")
+    end,
+    lazy = false,
+  },
+
+  {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
     config = function()
