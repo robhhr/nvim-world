@@ -72,19 +72,6 @@ require("lazy").setup({
   },
 
   {
-    "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    keys = {
-      { "<leader><Tab>", "<cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
-    },
-    version = "*",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("neoworld.plugins.nvim-tree")
-    end,
-  },
-
-  {
     "smoka7/hop.nvim",
     version = "*",
     cmd = { "HopWord" },
@@ -143,20 +130,6 @@ require("lazy").setup({
     "uga-rosa/ccc.nvim",
     cmd = { "CccConvert", "CccHighlighterDisable", "CccHighlighterEnable", "CccHighlighterToggle", "CccPick" },
     opts = {},
-  },
-
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    cmd = { "ToggleTerm" },
-    keys = {
-      { "<C-z>", "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
-    },
-    opts = {
-      size = 10,
-      open_mapping = [[<c-z>]],
-      direction = "horizontal",
-    },
   },
 
   {
