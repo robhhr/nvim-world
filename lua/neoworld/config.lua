@@ -48,15 +48,6 @@ require("lazy").setup({
   },
 
   {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-      require('neoworld.plugins.dashboard')
-    end,
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
-  },
-
-  {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     cmd = "Telescope",
@@ -95,14 +86,6 @@ require("lazy").setup({
   },
 
   {
-    "folke/todo-comments.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
-    config = function()
-      require("neoworld.plugins.todo-comments")
-    end,
-  },
-
-  {
     "kevinhwang91/nvim-ufo",
     dependencies = { "kevinhwang91/promise-async" },
     event = "VeryLazy",
@@ -128,18 +111,6 @@ require("lazy").setup({
   { "kylechui/nvim-surround",      version = "*",         event = "VeryLazy", opts = {} },
 
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-    ft = "markdown",
-    keys = {
-      { "<leader>rm", ":RenderMarkdown toggle<CR>", desc = "Toggle Markdown Preview" },
-    },
-    config = function()
-      require("neoworld.plugins.markdown")
-    end,
-  },
-
-  {
     "uga-rosa/ccc.nvim",
     cmd = { "CccConvert", "CccHighlighterDisable", "CccHighlighterEnable", "CccHighlighterToggle", "CccPick" },
     opts = {},
@@ -159,15 +130,6 @@ require("lazy").setup({
     config = function()
       require("neoworld.plugins.copilot")
     end
-  },
-
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
-    cmd = { "CodeCompanion", "CodeCompanionActions", "CodeCompanionChat", "CodeCompanionCmd" },
-    config = function()
-      require("neoworld.plugins.codecompanion")
-    end,
   },
 
   {
@@ -198,10 +160,8 @@ require("lazy").setup({
   { "windwp/nvim-autopairs",       event = "InsertEnter", config = true,      opts = {} },
 
   -- misc
-  { "echasnovski/mini.cursorword", version = "*",         opts = {} },
   { "numToStr/Comment.nvim",       opts = {} },
   { "jghauser/fold-cycle.nvim",    opts = {} },
-  { "NvChad/nvim-colorizer.lua",   opts = {} },
 
   -- lsp
   {
