@@ -48,6 +48,16 @@ require("lazy").setup({
   },
 
   {
+    "refractalize/oil-git-status.nvim",
+    dependencies = {
+      "stevearc/oil.nvim",
+    },
+    config = function()
+      require("neoworld.plugins.oil-git")
+    end,
+  },
+
+  {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     cmd = "Telescope",
@@ -108,7 +118,7 @@ require("lazy").setup({
     },
   },
 
-  { "kylechui/nvim-surround",      version = "*",         event = "VeryLazy", opts = {} },
+  { "kylechui/nvim-surround",   version = "*",         event = "VeryLazy", opts = {} },
 
   {
     "uga-rosa/ccc.nvim",
@@ -157,11 +167,11 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" },
   },
 
-  { "windwp/nvim-autopairs",       event = "InsertEnter", config = true,      opts = {} },
+  { "windwp/nvim-autopairs",    event = "InsertEnter", config = true,      opts = {} },
 
   -- misc
-  { "numToStr/Comment.nvim",       opts = {} },
-  { "jghauser/fold-cycle.nvim",    opts = {} },
+  { "numToStr/Comment.nvim",    opts = {} },
+  { "jghauser/fold-cycle.nvim", opts = {} },
 
   -- lsp
   {
