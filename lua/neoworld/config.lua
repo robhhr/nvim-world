@@ -136,13 +136,6 @@ require("lazy").setup({
   },
 
   {
-    "github/copilot.vim",
-    config = function()
-      require("neoworld.plugins.copilot")
-    end
-  },
-
-  {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
