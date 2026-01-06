@@ -84,6 +84,10 @@ mason_lspconfig.setup_handlers({
     lspconfig.tailwindcss.setup({
       filetypes = {
         "html",
+        "css",
+        "scss",
+        "sass",
+        "postcss",
         "javascript",
         "javascriptreact",
         "typescript",
