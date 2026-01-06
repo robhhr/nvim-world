@@ -1,3 +1,4 @@
+vim.lsp.set_log_level("ERROR")
 vim.g.have_nerd_font = true
 
 local options = {
