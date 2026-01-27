@@ -19,3 +19,12 @@ ls.add_snippets("html", {
     t({ "", "</body>", "</html>" }),
   }),
 })
+
+ls.add_snippets("php", {
+  s("echo", {
+    t("<?php echo "),
+    i(1),
+    t(" ?>"),
+  }),
+})
+
