@@ -3,11 +3,6 @@ local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
 
-ls.add_snippets("css", {
-  s("disp", { t("display: "), i(1, "block"), t(";") }),
-  s("pos", { t("position: "), i(1, "absolute"), t(";") }),
-})
-
 ls.add_snippets("html", {
   s("html5", {
     t("<!DOCTYPE html>"),
@@ -25,6 +20,31 @@ ls.add_snippets("php", {
     t("<?php echo "),
     i(1),
     t(" ?>"),
+  }),
+})
+
+ls.add_snippets("php", {
+  s("phpif", {
+    t("<?php if ("),
+    i(1, "condition"),
+    t(") : ?>"),
+    t({ "", "  " }),
+    i(2, "// content"),
+    t({ "", "<?php endif; ?>" }),
+  }),
+})
+
+ls.add_snippets("php", {
+  s("phpife", {
+    t("<?php if ("),
+    i(1),
+    t(") : ?>"),
+    t({ "", "  " }),
+    i(2),
+    t({ "", "<?php else : ?>" }),
+    t({ "", "  " }),
+    i(3),
+    t({ "", "<?php endif; ?>" }),
   }),
 })
 
