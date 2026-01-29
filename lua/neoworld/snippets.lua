@@ -48,3 +48,13 @@ ls.add_snippets("php", {
   }),
 })
 
+ls.add_snippets("php", {
+  s("wploop", {
+    t("<?php if (have_posts()) : ?>"),
+    t({ "", "  <?php while (have_posts()) : the_post(); ?>" }),
+    t({ "", "    " }),
+    i(1, "// content"),
+    t({ "", "  <?php endwhile; ?>" }),
+    t({ "", "<?php endif; ?>" }),
+  }),
+})
