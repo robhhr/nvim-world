@@ -6,20 +6,24 @@ local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 
 mason.setup({})
+
+local ensure_installed = {
+  'eslint',
+  'ts_ls',
+  'intelephense',
+  'lua_ls',
+  'tailwindcss',
+  'cssls',
+  'html',
+  'vimls',
+  'pyright',
+  'ruff',
+  'graphql'
+}
+
 mason_lspconfig.setup({
-  ensure_installed = {
-    'eslint',
-    'ts_ls',
-    'intelephense',
-    'lua_ls',
-    'tailwindcss',
-    'cssls',
-    'html',
-    'vimls',
-    'pyright',
-    'ruff',
-    'graphql'
-  },
+  ensure_installed = ensure_installed,
+  automatic_enable = true,
 })
 
 -- better to reuse since a lot of the configs are the same
@@ -33,140 +37,109 @@ local function common_on_attach(_, bufnr)
   -- buf_map(bufnr, "n", "<C-[>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 end
 
-mason_lspconfig.setup_handlers({
-  function(server_name)
-    lspconfig[server_name].setup({
-      on_attach = common_on_attach,
-    })
-  end,
+local function lsp_config(server_name, opts)
+  if vim.lsp.config then
+    vim.lsp.config(server_name, opts)
+  else
+    lspconfig[server_name].setup(opts)
+  end
+end
 
-  ["intelephense"] = function()
-    lspconfig.intelephense.setup({
-      root_dir = lspconfig.util.root_pattern(
-        "wp-config.php",
-        "wp-includes",
-        "index.php"
-      ),
-      on_attach = common_on_attach,
-    })
-  end,
+local default_opts = {
+  on_attach = common_on_attach,
+}
 
-  ["ts_ls"] = function()
-    lspconfig.ts_ls.setup({
-      on_attach = function(_, bufnr)
-        vim.lsp.handlers['textDocument/definition'] = function() end
-        vim.lsp.handlers['textDocument/references'] = function() end
-        common_on_attach(_, bufnr)
-      end,
-    })
-  end,
-
-  ["eslint"] = function()
-    lspconfig.eslint.setup({
-      on_attach = common_on_attach,
-    })
-  end,
-
-  ["lua_ls"] = function()
-    lspconfig.lua_ls.setup({
-      settings = {
-        Lua = {
-          diagnostics = { globals = { "vim" } },
-          workspace = { checkThirdParty = false },
-          telemetry = { enable = false },
-        },
+local custom_opts = {
+  intelephense = {
+    root_dir = lspconfig.util.root_pattern(
+      "wp-config.php",
+      "wp-includes",
+      "index.php"
+    ),
+  },
+  ts_ls = {
+    on_attach = function(_, bufnr)
+      vim.lsp.handlers['textDocument/definition'] = function() end
+      vim.lsp.handlers['textDocument/references'] = function() end
+      common_on_attach(_, bufnr)
+    end,
+  },
+  lua_ls = {
+    settings = {
+      Lua = {
+        diagnostics = { globals = { "vim" } },
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
       },
-      on_attach = common_on_attach,
-    })
-  end,
-
-  ["tailwindcss"] = function()
-    lspconfig.tailwindcss.setup({
-      filetypes = {
-        "html",
-        "css",
-        "scss",
-        "sass",
-        "postcss",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "vue",
-        "svelte",
-        "astro",
-        "php",
-        "blade",
-        "markdown",
-      },
-      on_attach = common_on_attach,
-    })
-  end,
-
-  ["cssls"] = function()
-    lspconfig.cssls.setup({
-      capabilities = vim.tbl_extend("keep", vim.lsp.protocol.make_client_capabilities(), {
-        textDocument = {
-          completion = {
-            completionItem = {
-              snippetSupport = true,
-            },
+    },
+  },
+  tailwindcss = {
+    filetypes = {
+      "html",
+      "css",
+      "scss",
+      "sass",
+      "postcss",
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "vue",
+      "svelte",
+      "astro",
+      "php",
+      "blade",
+      "markdown",
+    },
+  },
+  cssls = {
+    capabilities = vim.tbl_extend("keep", vim.lsp.protocol.make_client_capabilities(), {
+      textDocument = {
+        completion = {
+          completionItem = {
+            snippetSupport = true,
           },
         },
-      }),
-      settings = {
-        css = {
-          lint = {
-            unknownAtRules = "ignore"
-          }
+      },
+    }),
+    settings = {
+      css = {
+        lint = {
+          unknownAtRules = "ignore"
         }
-      },
-      filetypes = { "css", "scss", "less" },
-      on_attach = common_on_attach,
-    })
-  end,
-
-  ["html"] = function()
-    lspconfig.html.setup({
-      capabilities = vim.tbl_extend("keep", vim.lsp.protocol.make_client_capabilities(), {
-        textDocument = {
-          completion = {
-            completionItem = {
-              snippetSupport = true,
-            },
+      }
+    },
+    filetypes = { "css", "scss", "less" },
+  },
+  html = {
+    capabilities = vim.tbl_extend("keep", vim.lsp.protocol.make_client_capabilities(), {
+      textDocument = {
+        completion = {
+          completionItem = {
+            snippetSupport = true,
           },
         },
-      }),
-      on_attach = common_on_attach,
-    })
-  end,
-
-  ["pyright"] = function()
-    lspconfig.pyright.setup({
-      on_attach = common_on_attach,
-    })
-  end,
-
-  ["ruff"] = function()
-    lspconfig.ruff.setup({
-      on_attach = common_on_attach,
-      init_options = {
-        settings = {
-          args = {}, -- you can pass config args here if not using pyproject.toml
-        },
       },
-    })
-  end,
+    }),
+  },
+  ruff = {
+    init_options = {
+      settings = {
+        args = {}, -- you can pass config args here if not using pyproject.toml
+      },
+    },
+  },
+  graphql = {
+    cmd = { "graphql-lsp", "server", "-m", "stream" },
+    filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
+    root_dir = lspconfig.util.root_pattern(".graphqlrc*", "graphql.config.*", ".git"),
+  },
+}
 
-  ["graphql"] = function()
-    lspconfig.graphql.setup({
-      cmd = { "graphql-lsp", "server", "-m", "stream" },
-      filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
-      root_dir = lspconfig.util.root_pattern(".graphqlrc*", "graphql.config.*", ".git"),
-      on_attach = common_on_attach,
-    })
-  end,
-})
+for _, server_name in ipairs(ensure_installed) do
+  local opts = vim.tbl_deep_extend("force", {}, default_opts, custom_opts[server_name] or {})
+  lsp_config(server_name, opts)
+end
 
 cmp.setup({
   snippet = {
