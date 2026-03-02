@@ -14,7 +14,7 @@ conform.setup({
   end,
   formatters_by_ft = {
     lua = { "stylua" },
-    php = { "intelephense" },
+    -- php = { "intelephense" },
     javascript = { "eslint_d", "prettier" },
     typescript = { "eslint_d", "prettier" },
     javascriptreact = { "eslint_d", "prettier" },
