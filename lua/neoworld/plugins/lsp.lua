@@ -51,11 +51,7 @@ local default_opts = {
 
 local custom_opts = {
   intelephense = {
-    root_dir = lspconfig.util.root_pattern(
-      "wp-config.php",
-      "wp-includes",
-      "index.php"
-    ),
+    root_markers = { "wp-config.php", "wp-includes", "index.php" },
   },
   ts_ls = {
     on_attach = function(_, bufnr)
