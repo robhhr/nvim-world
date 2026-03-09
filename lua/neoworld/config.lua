@@ -182,6 +182,16 @@ require("lazy").setup({
     end
   },
 
+  -- copilot
+  {
+    "github/copilot.vim",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    init = function()
+      vim.g.copilot_enabled = 0
+    end,
+  },
+
   -- cmp
   {
     "hrsh7th/nvim-cmp",
