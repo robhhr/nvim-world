@@ -63,7 +63,7 @@ local custom_opts = {
   lua_ls = {
     settings = {
       Lua = {
-        diagnostics = { globals = { "vim" } },
+        diagnostics = { globals = { "vim", "hl" } },
         workspace = { checkThirdParty = false },
         telemetry = { enable = false },
       },
