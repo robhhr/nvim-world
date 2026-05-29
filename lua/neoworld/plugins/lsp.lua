@@ -7,6 +7,12 @@ local lspkind = require('lspkind')
 
 mason.setup({})
 
+vim.o.winborder = "rounded"
+
+vim.diagnostic.config({
+  float = { source = true },
+})
+
 local ensure_installed = {
   'eslint',
   'ts_ls',
