@@ -18,7 +18,8 @@ local ensure_installed = {
   'vimls',
   'pyright',
   'ruff',
-  'graphql'
+  'graphql',
+  'gopls'
 }
 
 mason_lspconfig.setup({
