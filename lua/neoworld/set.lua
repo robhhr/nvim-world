@@ -1,8 +1,15 @@
+local theme_file = vim.fn.expand("~/.config/theme/current")
+local f = io.open(theme_file, "r")
+local mode = f and f:read("*l") or "dark"
+
 vim.lsp.set_log_level("ERROR")
 vim.g.have_nerd_font = true
 
+if f then f:close() end
+
+vim.o.background = mode  -- gruvbox reads this natively, "light" or "dark"
+
 local options = {
-  background = 'dark',
   backup = false,
   breakindent = true,
   breakindentopt = { 'shift:2', 'min:20', 'sbr' },

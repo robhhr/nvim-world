@@ -22,6 +22,11 @@ require("lazy").setup({
     config = function()
       require("neoworld.plugins.gruvbox")
       vim.cmd([[colorscheme gruvbox]])
+
+      local f = io.open(vim.fn.expand("~/.config/theme/current"), "r")
+      local mode = f and f:read("*l") or "dark"
+      if f then f:close() end
+      vim.o.background = mode
     end,
   },
 
