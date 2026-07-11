@@ -14,7 +14,7 @@ conform.setup({
   end,
   formatters_by_ft = {
     lua = { "stylua" },
-    -- php = { "intelephense" },
+    php = { "phpcbf" },
     javascript = { "eslint_d", "prettier" },
     typescript = { "eslint_d", "prettier" },
     javascriptreact = { "eslint_d", "prettier" },
@@ -25,18 +25,16 @@ conform.setup({
     css = { "prettier" },
     scss = { "prettier" },
     markdown = { "prettier" },
-    python = { "ruff" },
   },
   formatters = {
+    phpcbf = {
+      command = "./vendor/bin/phpcbf",
+      cwd = require("conform.util").root_file({ "phpcs.xml.dist", "composer.json", ".git" }),
+    },
     prettier = {
       command = "./node_modules/.bin/prettier",
       args = { "--stdin-filepath", "$FILENAME" },
       cwd = require("conform.util").root_file({ ".prettierrc", "package.json", ".git" }),
-    },
-    ruff = {
-      command = "ruff",
-      args = { "format", "-" },
-      cwd = require("conform.util").root_file({ "pyproject.toml", ".git" }),
     },
   },
 })
