@@ -1,13 +1,9 @@
-local theme_file = vim.fn.expand("~/.config/theme/current")
-local f = io.open(theme_file, "r")
-local mode = f and f:read("*l") or "dark"
-
 vim.lsp.set_log_level("ERROR")
 vim.g.have_nerd_font = true
 
-if f then f:close() end
-
-vim.o.background = mode  -- gruvbox reads this natively, "light" or "dark"
+-- gruvbox reads vim.o.background natively ("light"/"dark"); mode comes from the
+-- system theme file via the shared reader in utils/theme.
+vim.o.background = require("neoworld.utils.theme").read_mode()
 
 local options = {
   backup = false,
