@@ -13,15 +13,4 @@ vim.api.nvim_set_keymap('n', '<leader>fp', ':!./node_modules/.bin/prettier --wri
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>fm', ':lua ToggleFormatOnSave()<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_create_augroup("FormatOnSaveGroup", { clear = true })
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-  group = "FormatOnSaveGroup",
-  pattern = "*",
-  callback = function()
-    if vim.g.format_on_save then
-      -- vim.lsp.buf.format({ async = false })
-      require("conform").format({ async = false, lsp_fallback = true })
-    end
-  end,
-})
+-- format-on-save is handled by conform's built-in `format_on_save`
