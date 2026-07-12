@@ -16,7 +16,8 @@ oil.setup({
   },
   keymaps = {
     ["<C-h>"] = false,
-    ["<M-h>"] = "actions.select_split"
+    ["<M-h>"] = "actions.select_split",
+    ["<Tab>"] = { "actions.preview", opts = { vertical = true, split = "botright" } }
   },
   skip_confirm_for_simple_edits = true,
   view_options = {
