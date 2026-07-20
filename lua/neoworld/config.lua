@@ -22,11 +22,7 @@ require("lazy").setup({
     config = function()
       require("neoworld.plugins.gruvbox")
       vim.cmd([[colorscheme gruvbox]])
-
-      local f = io.open(vim.fn.expand("~/.config/theme/current"), "r")
-      local mode = f and f:read("*l") or "dark"
-      if f then f:close() end
-      vim.o.background = mode
+      vim.o.background = require("neoworld.utils.theme").read_mode()
     end,
   },
 
@@ -81,13 +77,24 @@ require("lazy").setup({
 
   {
     "ThePrimeagen/harpoon",
-    keys = {
-      { "<leader>a", function() require("harpoon.mark").add_file() end,        desc = "Harpoon add file" },
-      { "<C-e>",     function() require("harpoon.ui").toggle_quick_menu() end, desc = "Harpoon quick menu" },
-    },
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("neoworld.plugins.harpoon")
     end,
+    keys = {
+      { "<leader>a", function() require("harpoon"):list():add() end,  desc = "Harpoon add file" },
+      {
+        "<C-e>",
+        function()
+          local h = require("harpoon")
+          h.ui:toggle_quick_menu(h:list())
+        end,
+        desc = "Harpoon quick menu"
+      },
+      { "<C-j>",     function() require("harpoon"):list():prev() end, desc = "Harpoon prev" },
+      { "<C-l>",     function() require("harpoon"):list():next() end, desc = "Harpoon next" },
+    },
   },
 
   {
@@ -137,7 +144,10 @@ require("lazy").setup({
     keys = {
       { "<leader>xx", "<cmd>Trouble diagnostics toggle focus=true<CR>", desc = "Trouble diagnostics" },
     },
-    opts = {},
+    opts = {
+      warn_no_results = false,
+      open_no_results = true,
+    },
   },
 
   {
@@ -185,6 +195,46 @@ require("lazy").setup({
     config = function()
       require("neoworld.plugins.conform-nvim")
     end
+  },
+
+  -- linting (phpcs via project-local ruleset)
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPost", "BufWritePost", "InsertLeave" },
+    config = function()
+      require("neoworld.plugins.nvim-lint")
+    end,
+  },
+
+  -- debugging (DAP) — language-agnostic core; add a language adapter per dependency
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",           -- required by dap-ui
+      "theHamsta/nvim-dap-virtual-text", -- inline variable values
+      "leoluz/nvim-dap-go",              -- language adapter: Go (delve)
+    },
+    config = function()
+      require("neoworld.plugins.dap")
+    end,
+    keys = {
+      -- VSCode-matched function keys (so course instructions translate 1:1)
+      { "<F5>",       function() require("dap").continue() end,                                  desc = "Debug: start/continue" },
+      { "<F9>",       function() require("dap").toggle_breakpoint() end,                         desc = "Debug: toggle breakpoint" },
+      { "<F10>",      function() require("dap").step_over() end,                                 desc = "Debug: step over" },
+      { "<F11>",      function() require("dap").step_into() end,                                 desc = "Debug: step into" },
+      { "<F23>",      function() require("dap").step_out() end,                                  desc = "Debug: step out" }, -- <S-F11>
+      -- leader fallbacks (terminals are inconsistent with shifted F-keys)
+      { "<leader>db", function() require("dap").toggle_breakpoint() end,                         desc = "Debug: breakpoint" },
+      { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input("Condition: ")) end, desc = "Debug: conditional breakpoint" },
+      { "<leader>dc", function() require("dap").continue() end,                                  desc = "Debug: continue" },
+      { "<leader>do", function() require("dap").step_out() end,                                  desc = "Debug: step out" },
+      { "<leader>dr", function() require("dap").repl.toggle() end,                               desc = "Debug: REPL" },
+      { "<leader>dl", function() require("dap").run_last() end,                                  desc = "Debug: run last" },
+      { "<leader>du", function() require("dapui").toggle() end,                                  desc = "Debug: toggle UI" },
+      { "<leader>dt", function() require("dap-go").debug_test() end,                             desc = "Debug: nearest Go test" },
+    },
   },
 
   -- copilot
