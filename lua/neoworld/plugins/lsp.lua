@@ -2,6 +2,7 @@ local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
 local lspconfig = require('lspconfig')
 local cmp = require('cmp')
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 
@@ -22,8 +23,6 @@ local ensure_installed = {
   'cssls',
   'html',
   'vimls',
-  'pyright',
-  'ruff',
   'graphql',
   'gopls'
 }
@@ -52,8 +51,12 @@ local function lsp_config(server_name, opts)
   end
 end
 
+-- add nvim-cmp's richer completion capabilities to every server
+local capabilities = cmp_nvim_lsp.default_capabilities()
+
 local default_opts = {
   on_attach = common_on_attach,
+  capabilities = capabilities,
 }
 
 local custom_opts = {
@@ -96,15 +99,6 @@ local custom_opts = {
     },
   },
   cssls = {
-    capabilities = vim.tbl_extend("keep", vim.lsp.protocol.make_client_capabilities(), {
-      textDocument = {
-        completion = {
-          completionItem = {
-            snippetSupport = true,
-          },
-        },
-      },
-    }),
     settings = {
       css = {
         lint = {
@@ -114,28 +108,23 @@ local custom_opts = {
     },
     filetypes = { "css", "scss", "less" },
   },
-  html = {
-    capabilities = vim.tbl_extend("keep", vim.lsp.protocol.make_client_capabilities(), {
-      textDocument = {
-        completion = {
-          completionItem = {
-            snippetSupport = true,
-          },
-        },
-      },
-    }),
-  },
-  ruff = {
-    init_options = {
-      settings = {
-        args = {}, -- you can pass config args here if not using pyproject.toml
-      },
-    },
-  },
   graphql = {
     cmd = { "graphql-lsp", "server", "-m", "stream" },
     filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
     root_dir = lspconfig.util.root_pattern(".graphqlrc*", "graphql.config.*", ".git"),
+  },
+  gopls = {
+    settings = {
+      gopls = {
+        staticcheck = true,
+        analyses = {
+          unusedparams = true,
+          unusedwrite = true,
+          nilness = true,
+          useany = true,
+        },
+      },
+    },
   },
 }
 
@@ -143,6 +132,28 @@ for _, server_name in ipairs(ensure_installed) do
   local opts = vim.tbl_deep_extend("force", {}, default_opts, custom_opts[server_name] or {})
   lsp_config(server_name, opts)
 end
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function(args)
+    local client = vim.lsp.get_clients({ bufnr = args.buf, name = "gopls" })[1]
+    if not client then
+      return
+    end
+
+    local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
+    params.context = { only = { "source.organizeImports" }, diagnostics = {} }
+
+    local result = vim.lsp.buf_request_sync(args.buf, "textDocument/codeAction", params, 1000)
+    for _, res in pairs(result or {}) do
+      for _, action in pairs(res.result or {}) do
+        if action.edit then
+          vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding)
+        end
+      end
+    end
+  end,
+})
 
 cmp.setup({
   snippet = {
