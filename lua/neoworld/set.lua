@@ -15,6 +15,7 @@ local options = {
   endofline = true,
   expandtab = true,
   fileencoding = 'utf-8',
+  fillchars = { eob = ' ' },
   foldcolumn = '1',
   foldenable = true,
   foldlevel = 99,
