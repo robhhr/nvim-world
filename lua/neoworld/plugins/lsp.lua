@@ -24,7 +24,8 @@ local ensure_installed = {
   'html',
   'vimls',
   'graphql',
-  'gopls'
+  'gopls',
+  'astro',
 }
 
 mason_lspconfig.setup({

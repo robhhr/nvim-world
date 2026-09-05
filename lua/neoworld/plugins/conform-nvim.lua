@@ -25,6 +25,7 @@ conform.setup({
     css = { "prettier" },
     scss = { "prettier" },
     markdown = { "prettier" },
+    astro = { "prettier" }, -- needs prettier-plugin-astro in the project's devDeps
   },
   formatters = {
     phpcbf = {
